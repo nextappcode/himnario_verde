@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self';">
+    <title>Himnario Verde - Kusiywan Diosman Takinachej</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="lyrics.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00A651">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+</head>
+<body>
+    <header class="app-header">
+        <h1 class="app-title">Himnario Verde</h1>
+        <h2 class="app-subtitle">Kusiywan Diosman Takinachej</h2>
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Buscar por n��mero o título...">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <ul class="song-list" id="songList"></ul>
+        
+        <div id="lyricsContainer" class="lyrics-content" style="display: none;">
+            <h2 id="currentSongTitle" class="song-title"></h2>
+            
+            <div class="lyrics-section quechua-section">
+                <h3 class="section-header quechua-header">Quechua</h3>
+                <div id="quechuaLyrics"></div>
+            </div>
+
+            <hr class="lyrics-divider">
+
+            <div class="lyrics-section castellano-section">
+                <h3 class="section-header castellano-header">Castellano</h3>
+                <div id="castellanoLyrics"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p class="copyright">© 2024 codigopiter</p>
+            <a href="https://www.paypal.com/donate" class="donate-button" target="_blank" rel="noopener noreferrer">
+                <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" />
+                Donar
+            </a>
+        </div>
+    </footer>
+
+    <div id="offlineMessage" class="offline-message" style="display: none;">
+        Modo sin conexión activado
+    </div>
+
+    <script>
+        // Registrar el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registrado con éxito:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Error al registrar ServiceWorker:', error);
+                    });
+            });
+
+            // Mostrar mensaje cuando esté offline/online
+            window.addEventListener('online', () => {
+                document.getElementById('offlineMessage').style.display = 'none';
+            });
+            
+            window.addEventListener('offline', () => {
+                document.getElementById('offlineMessage').style.display = 'block';
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,139 @@
+/* Estilos para las secciones de letras */
+.lyrics-content {
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+.lyrics-section {
+    margin: clamp(1rem, 3vw, 1.5rem) 0;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.quechua-section {
+    border-left: 4px solid var(--primary-color);
+}
+
+.castellano-section {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.section-header {
+    color: var(--primary-color);
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    margin-bottom: clamp(0.75rem, 2vw, 1rem);
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(30px, 10vw, 50px);
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 1px;
+}
+
+.quechua-header {
+    color: var(--primary-color);
+}
+
+.castellano-header {
+    color: var(--secondary-color);
+}
+
+.lyrics-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    margin: clamp(1.5rem, 4vw, 2rem) 0;
+}
+
+.lyrics-line {
+    margin: clamp(0.5rem, 2vw, 0.75rem) 0;
+    padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1rem);
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    line-height: 1.6;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.quechua-line {
+    color: var(--primary-dark);
+}
+
+.castellano-line {
+    color: var(--text-color);
+}
+
+.lyrics-line:hover {
+    background-color: var(--hover-color);
+    border-left: 3px solid var(--primary-color);
+    padding-left: clamp(1rem, 4vw, 1.25rem);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes para modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .lyrics-section {
+        background: #2d2d2d;
+    }
+
+    .lyrics-line {
+        color: #ffffff;
+    }
+
+    .quechua-line {
+        color: #4cd964;
+    }
+
+    .castellano-line {
+        color: #ffffff;
+    }
+}
+
+/* Ajustes para dispositivos táctiles */
+@media (hover: none) {
+    .lyrics-line:hover {
+        background-color: transparent;
+        border-left: none;
+        padding-left: clamp(0.75rem, 3vw, 1rem);
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+    .lyrics-content {
+        padding: 0.75rem;
+    }
+
+    .lyrics-section {
+        margin: 0.75rem 0;
+        padding: 0.75rem;
+    }
+
+    .lyrics-line {
+        margin: 0.5rem 0;
+        padding: 0.5rem 0.75rem;
+    }
+} 
