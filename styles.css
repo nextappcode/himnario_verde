@@ -7,7 +7,7 @@
     --shadow-color: rgba(0, 166, 81, 0.1);
     --hover-color: rgba(0, 166, 81, 0.05);
     --background-color: #F8F9FA;
-    --header-height: auto;
+    --header-height: 73px;
     --content-max-width: 800px;
 }
 
@@ -17,110 +17,115 @@
     padding: 0;
 }
 
-html, body {
+html {
     height: 100%;
-    width: 100%;
-    overflow-x: hidden;
 }
 
 body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     font-size: 16px;
+    padding-top: var(--header-height);
 }
 
 .app-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 2rem 1rem;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    position: sticky;
+    background-color: #00A651;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
     height: var(--header-height);
+    will-change: transform;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.header-titles {
+    color: white;
 }
 
 .app-title {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    margin: 0;
+    font-size: 1.5rem;
     font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    position: relative;
-    display: inline-block;
-    margin: 0 auto;
-}
-
-.app-title::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
+    margin: 0;
+    line-height: 1.2;
 }
 
 .app-subtitle {
-    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-size: 0.9rem;
+    font-weight: 400;
     margin: 0;
-    font-weight: 500;
     opacity: 0.9;
-    letter-spacing: 1px;
 }
 
-.search-container {
-    width: 100%;
-    max-width: var(--content-max-width);
-    margin: 0.5rem auto 0;
-    padding: 0 1rem;
+.search-wrapper {
     position: relative;
+    flex: 0 1 400px;
 }
 
 .search-input {
     width: 100%;
-    max-width: 500px;
-    padding: 1rem 1.5rem;
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    outline: none;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    margin: 0 auto;
-    display: block;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-.search-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
 }
 
 .search-input:focus {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
+    outline: none;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    fill: #666;
+    pointer-events: none;
 }
 
 .main-content {
+    position: relative;
     max-width: var(--content-max-width);
     margin: 0 auto;
     padding: 1rem;
     min-height: calc(100vh - var(--header-height));
+    width: 100%;
 }
 
 .song-list {
@@ -213,23 +218,62 @@ body {
         padding: 0.75rem;
     }
     
-    .search-container {
-        padding: 0.75rem;
+    .search-wrapper {
+        width: 100%;
+    }
+    
+    .header-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .header-brand {
+        width: auto;
+        justify-content: flex-start;
+    }
+
+    .header-logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .app-title {
+        font-size: 1.2rem;
+    }
+
+    .app-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .search-wrapper {
+        order: 2;
+        flex-basis: 100%;
+        margin-top: 0.25rem;
+    }
+
+    .search-input {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    :root {
+        --header-height: 110px;
     }
 }
 
 @media (max-width: 480px) {
     .app-header {
-        padding: 1.5rem 1rem;
-        gap: 1rem;
+        padding: 0.5rem;
     }
     
-    .search-container {
-        padding: 0 0.75rem;
+    .search-wrapper {
+        padding: 0;
     }
     
     .search-input {
-        padding: 0.75rem 1.25rem;
+        padding: 0.5rem 2rem 0.5rem 1rem;
     }
     
     .song-list li {
@@ -238,6 +282,18 @@ body {
     
     .button {
         padding: 0.5rem 1rem;
+    }
+
+    .header-brand {
+        gap: 0.5rem;
+    }
+
+    .main-content {
+        padding-top: 100px;
+    }
+
+    :root {
+        --header-height: 100px;
     }
 }
 
@@ -332,7 +388,7 @@ body {
 .app-footer {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    padding: 1.5rem 1rem;
+    padding: 1rem;
     margin-top: 2rem;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -344,7 +400,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .copyright {
@@ -361,7 +417,7 @@ body {
     color: var(--primary-color);
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 25px;
+    border-radius: 20px;
     font-weight: 500;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -372,9 +428,10 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.donate-button img {
+.paypal-icon {
+    width: 20px;
     height: 20px;
-    width: auto;
+    display: block;
 }
 
 /* Ajustes responsive para el footer */
@@ -398,7 +455,7 @@ body {
 /* Ajustes para modo oscuro */
 @media (prefers-color-scheme: dark) {
     .donate-button {
-        background-color: #2d2d2d;
-        color: white;
+        background-color: #ffffff;
+        color: #003087;
     }
 } 
