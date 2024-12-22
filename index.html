@@ -3,79 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;">
+    
     <title>Himnario Verde - Kusiywan Diosman Takinachej</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="lyrics.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#00A651">
-    <link rel="apple-touch-icon" href="img/icon-192x192.png">
 </head>
 <body>
-    <svg style="display: none;">
-        <symbol id="icon-paypal" viewBox="0 0 1024 1024">
-            <title>PayPal</title>
-            <path fill="#003087" d="M304.482 467.753l-16.482 104.247h32.964c54.941 0 97.894-22.471 110.118-87.765 12.224-65.294-27.529-87.765-82.47-87.765h-32.964l-11.166 71.283zM390.023 152.471c-98.447 0-175.412 40.447-197.883 144.424l-76.718 486.541h153.435l30.141-191.894h98.447c163.741 0 272.424-87.765 294.895-228.847 27.529-163.741-98.447-210.541-302.317-210.541z"></path>
-            <path fill="#009cde" d="M729.506 467.753l-16.482 104.247h32.964c54.941 0 97.894-22.471 110.118-87.765 12.224-65.294-27.529-87.765-82.47-87.765h-32.964l-11.166 71.283zM815.047 152.471c-98.447 0-175.412 40.447-197.883 144.424l-76.718 486.541h153.435l30.141-191.894h98.447c163.741 0 272.424-87.765 294.895-228.847 27.529-163.741-98.447-210.541-302.317-210.541z"></path>
-        </symbol>
-    </svg>
-
-    <header class="app-header">
-        <div class="header-container">
-            <div class="header-brand">
-                <img src="img/logo.png" alt="Logo" class="header-logo" />
-                <div class="header-titles">
-                    <h1 class="app-title">Himnario Verde</h1>
-                    <h2 class="app-subtitle">Kusiywan Diosman Takinachej</h2>
+    <div class="app-container">
+        <!-- Header Flotante -->
+        <header class="app-header">
+            <div class="header-inner">
+                <div class="logo-section">
+                    <img src="img/logo.png" alt="Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Himnario Verde</h1>
+                        <span>Kusiywan Diosman Takinachej</span>
+                    </div>
+                </div>
+                
+                <div class="search-section">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Buscar por número o título..."
+                        >
+                        <span class="search-icon">🔍</span>
+                    </div>
                 </div>
             </div>
-            <div class="search-wrapper">
-                <input type="text" class="search-input" id="searchInput" placeholder="Buscar por número o título...">
-                <svg class="search-icon" viewBox="0 0 24 24">
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                </svg>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="main-section">
+            <!-- Lista de Himnos -->
+            <div class="songs-container">
+                <div class="songs-header">
+                    <h2>Himnos</h2>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid">
+                            <span>⊞</span>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <span>≡</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="songs-grid" id="songList"></div>
             </div>
-        </div>
-    </header>
 
-    <main class="main-content">
-        <ul class="song-list" id="songList"></ul>
-        
-        <div id="lyricsContainer" class="lyrics-content" style="display: none;">
-            <h2 id="currentSongTitle" class="song-title"></h2>
-            
-            <div class="lyrics-section quechua-section">
-                <h3 class="section-header quechua-header">Quechua</h3>
-                <div id="quechuaLyrics"></div>
+            <!-- Modal de Letras -->
+            <div class="lyrics-modal" id="lyricsOverlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="currentSongTitle"></h2>
+                        <button class="close-btn" id="closeLyrics">×</button>
+                    </div>
+
+                    <div class="language-tabs">
+                        <button class="tab active" data-tab="quechua">
+                            <span class="tab-icon">🗣️</span>
+                            <span>Quechua</span>
+                        </button>
+                        <button class="tab" data-tab="castellano">
+                            <span class="tab-icon">📝</span>
+                            <span>Castellano</span>
+                        </button>
+                    </div>
+
+                    <div class="lyrics-content">
+                        <div class="lyrics-section active" id="quechuaLyrics"></div>
+                        <div class="lyrics-section" id="castellanoLyrics"></div>
+                    </div>
+                </div>
             </div>
-
-            <hr class="lyrics-divider">
-
-            <div class="lyrics-section castellano-section">
-                <h3 class="section-header castellano-header">Castellano</h3>
-                <div id="castellanoLyrics"></div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="app-footer">
-        <div class="footer-content">
-            <p class="copyright">© 2024 codigopiter</p>
-            <a href="https://www.paypal.com/donate" class="donate-button" target="_blank" rel="noopener noreferrer">
-                <svg class="paypal-icon">
-                    <use xlink:href="#icon-paypal"></use>
-                </svg>
-                Donar
-            </a>
-        </div>
-    </footer>
-
-    <div id="offlineMessage" class="offline-message" style="display: none;">
-        Modo sin conexión activado
+        </main>
     </div>
-
-    <script src="sw-register.js"></script>
+    <!-- Luego cargar el script principal -->
     <script src="script.js"></script>
 </body>
 </html> 
