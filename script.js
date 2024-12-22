@@ -10,6 +10,7 @@ class SongManager {
         this.castellanoLyrics = document.getElementById('castellanoLyrics');
         
         this.init();
+        this.setupHistoryHandling();
     }
 
     async init() {
@@ -17,7 +18,6 @@ class SongManager {
             const response = await fetch('letras.json');
             if (!response.ok) throw new Error('Error al cargar las letras');
             const data = await response.json();
-            // Asegurarnos de que data.himnos es un array
             this.songs = Array.isArray(data.himnos) ? data.himnos : [];
             if (this.songs.length === 0) {
                 console.error('No se encontraron himnos en el archivo');
@@ -27,18 +27,38 @@ class SongManager {
             this.setupEventListeners();
         } catch (error) {
             console.error('Error:', error);
-            // Mostrar mensaje de error al usuario
             this.songList.innerHTML = '<li class="error-message">Error al cargar los himnos. Por favor, intente más tarde.</li>';
         }
     }
 
+    setupHistoryHandling() {
+        // Agregar estado inicial
+        history.replaceState({ view: 'list' }, '');
+
+        // Manejar eventos de navegación
+        window.addEventListener('popstate', (event) => {
+            const state = event.state || { view: 'list' };
+            if (state.view === 'list') {
+                this.showSongList(false);
+            } else if (state.view === 'lyrics' && state.songId) {
+                const song = this.songs.find(s => s.numero === state.songId);
+                if (song) {
+                    this.displayLyrics(song, false);
+                }
+            }
+        });
+    }
+
     setupEventListeners() {
         this.searchInput.addEventListener('input', () => this.handleSearch());
+        
         // Agregar botón para volver a la lista
         const backButton = document.createElement('button');
         backButton.textContent = 'Volver a la lista';
         backButton.className = 'button back-button';
-        backButton.addEventListener('click', () => this.showSongList());
+        backButton.addEventListener('click', () => {
+            history.back();
+        });
         this.lyricsContainer.insertBefore(backButton, this.lyricsContainer.firstChild);
     }
 
@@ -61,22 +81,23 @@ class SongManager {
         songs.forEach(song => {
             const li = document.createElement('li');
             li.textContent = `${song.numero}. ${song.titulo}`;
-            li.addEventListener('click', () => this.displayLyrics(song));
+            li.addEventListener('click', () => this.displayLyrics(song, true));
             this.songList.appendChild(li);
         });
     }
 
-    displayLyrics(song) {
+    displayLyrics(song, addToHistory = true) {
         this.currentSong = song;
         this.currentSongTitle.textContent = `${song.numero}. ${song.titulo}`;
         
         // Mostrar letras en quechua
         this.quechuaLyrics.innerHTML = '';
         if (song.letra && song.letra.quechua) {
-            song.letra.quechua.forEach(line => {
+            song.letra.quechua.forEach((line, index) => {
                 if (line.trim()) {
                     const p = document.createElement('p');
                     p.className = 'lyrics-line quechua-line';
+                    p.style.setProperty('--line-index', index);
                     p.textContent = line;
                     this.quechuaLyrics.appendChild(p);
                 }
@@ -86,10 +107,11 @@ class SongManager {
         // Mostrar letras en castellano
         this.castellanoLyrics.innerHTML = '';
         if (song.letra && song.letra.castellano) {
-            song.letra.castellano.forEach(line => {
+            song.letra.castellano.forEach((line, index) => {
                 if (line.trim()) {
                     const p = document.createElement('p');
                     p.className = 'lyrics-line castellano-line';
+                    p.style.setProperty('--line-index', index);
                     p.textContent = line;
                     this.castellanoLyrics.appendChild(p);
                 }
@@ -99,11 +121,31 @@ class SongManager {
         // Mostrar el contenedor de letras
         this.lyricsContainer.style.display = 'block';
         this.songList.style.display = 'none';
+
+        // Agregar a la historia del navegador
+        if (addToHistory) {
+            history.pushState(
+                { view: 'lyrics', songId: song.numero },
+                '',
+                `#himno-${song.numero}`
+            );
+        }
+
+        // Hacer scroll al inicio
+        window.scrollTo(0, 0);
     }
 
-    showSongList() {
+    showSongList(addToHistory = true) {
         this.lyricsContainer.style.display = 'none';
         this.songList.style.display = 'block';
+        
+        if (addToHistory) {
+            history.pushState({ view: 'list' }, '', './');
+        }
+
+        // Limpiar la búsqueda
+        this.searchInput.value = '';
+        this.renderSongList();
     }
 }
 
