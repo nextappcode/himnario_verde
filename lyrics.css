@@ -1,91 +1,176 @@
 /* Estilos para las secciones de letras */
 .lyrics-content {
-    padding: clamp(1rem, 3vw, 2rem);
+    padding: 3rem;
+    animation: fadeIn 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.lyrics-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--gradient-primary);
+}
+
+.song-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: slideDown 0.6s ease-out;
+    position: relative;
+}
+
+.song-title::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    animation: expandWidth 0.8s ease-out forwards;
 }
 
 .lyrics-section {
-    margin: clamp(1rem, 3vw, 1.5rem) 0;
-    padding: clamp(1rem, 3vw, 1.5rem);
-    border-radius: 12px;
-    background: white;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: all 0.3s ease;
+    margin: 3rem 0;
+    padding: 2.5rem;
+    border-radius: 20px;
+    background: var(--card-background);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.lyrics-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+    pointer-events: none;
+}
+
+.lyrics-section:hover::before {
+    opacity: 1;
 }
 
 .quechua-section {
-    border-left: 4px solid var(--primary-color);
+    border-left: 6px solid var(--primary-color);
+    animation-delay: 0.2s;
 }
 
 .castellano-section {
-    border-left: 4px solid var(--secondary-color);
+    border-left: 6px solid var(--secondary-color);
+    animation-delay: 0.4s;
 }
 
 .section-header {
     color: var(--primary-color);
-    font-size: clamp(1.1rem, 4vw, 1.4rem);
-    margin-bottom: clamp(0.75rem, 2vw, 1rem);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 1px;
     position: relative;
+    padding-bottom: 1rem;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .section-header::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(30px, 10vw, 50px);
-    height: 2px;
-    background: var(--primary-color);
-    border-radius: 1px;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    animation: expandWidth 0.6s ease-out forwards;
 }
 
 .quechua-header {
     color: var(--primary-color);
+    animation-delay: 0.3s;
 }
 
 .castellano-header {
     color: var(--secondary-color);
+    animation-delay: 0.5s;
 }
 
 .lyrics-divider {
     border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-    margin: clamp(1.5rem, 4vw, 2rem) 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent,
+        var(--primary-color),
+        var(--secondary-color),
+        transparent
+    );
+    margin: 3rem 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.6s;
 }
 
 .lyrics-line {
-    margin: clamp(0.5rem, 2vw, 0.75rem) 0;
-    padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1rem);
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-    line-height: 1.6;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    margin: 1.5rem 0;
+    padding: 1.25rem 2rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    border-radius: 15px;
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
     opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
+    transform: translateY(20px);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .quechua-line {
     color: var(--primary-dark);
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: calc(var(--line-index) * 0.1s + 0.4s);
 }
 
 .castellano-line {
     color: var(--text-color);
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: calc(var(--line-index) * 0.1s + 0.6s);
 }
 
 .lyrics-line:hover {
     background-color: var(--hover-color);
-    border-left: 3px solid var(--primary-color);
-    padding-left: clamp(1rem, 4vw, 1.25rem);
+    transform: translateX(15px) scale(1.02);
+    box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-@keyframes fadeIn {
+/* Nuevas animaciones */
+@keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -93,14 +178,59 @@
     }
 }
 
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 60px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /* Ajustes para modo oscuro */
 @media (prefers-color-scheme: dark) {
     .lyrics-section {
-        background: #2d2d2d;
+        background: linear-gradient(145deg, #1E1E1E, #252525);
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .lyrics-line {
         color: #ffffff;
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.05);
     }
 
     .quechua-line {
@@ -110,30 +240,117 @@
     .castellano-line {
         color: #ffffff;
     }
+
+    .lyrics-section::before {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+    }
+
+    .lyrics-line:hover {
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    }
 }
 
 /* Ajustes para dispositivos táctiles */
 @media (hover: none) {
     .lyrics-line:hover {
+        transform: none;
         background-color: transparent;
-        border-left: none;
-        padding-left: clamp(0.75rem, 3vw, 1rem);
+        box-shadow: none;
+    }
+
+    .lyrics-section:hover::before {
+        opacity: 0;
     }
 }
 
 /* Ajustes para pantallas pequeñas */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .lyrics-content {
-        padding: 0.75rem;
+        padding: 2rem;
+    }
+
+    .song-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
     }
 
     .lyrics-section {
-        margin: 0.75rem 0;
-        padding: 0.75rem;
+        margin: 2rem 0;
+        padding: 2rem;
+    }
+
+    .section-header {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .lyrics-line {
-        margin: 0.5rem 0;
-        padding: 0.5rem 0.75rem;
+        padding: 1rem 1.5rem;
+        margin: 1rem 0;
+        font-size: 1.1rem;
+    }
+
+    .lyrics-divider {
+        margin: 2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .lyrics-content {
+        padding: 1.5rem;
+    }
+
+    .song-title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .song-title::after {
+        bottom: -0.75rem;
+        width: 80px;
+    }
+
+    .lyrics-section {
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+    }
+
+    .section-header {
+        font-size: 1.3rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .lyrics-line {
+        padding: 0.875rem 1.25rem;
+        margin: 0.875rem 0;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .lyrics-divider {
+        margin: 1.5rem 0;
+    }
+}
+
+/* Soporte para animaciones reducidas */
+@media (prefers-reduced-motion: reduce) {
+    .lyrics-content,
+    .lyrics-section,
+    .section-header,
+    .lyrics-line,
+    .song-title,
+    .lyrics-divider {
+        animation: none;
+        transition: none;
+    }
+
+    .lyrics-line:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .lyrics-section::before {
+        display: none;
     }
 } 
