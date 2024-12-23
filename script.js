@@ -11,13 +11,13 @@ class SongManager {
         this.closeLyricsButton = document.getElementById('closeLyrics');
         this.modalOpen = false;
         this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        this.isFirstVisit = true;
+        this.hasUserInteracted = false;
         
         this.init();
         this.setupTabNavigation();
         this.setupModalClose();
         if (this.isMobile) {
-            this.setupExitConfirmation();
+            this.setupMobileNavigation();
         }
     }
 
@@ -83,6 +83,7 @@ class SongManager {
     displayLyrics(song) {
         this.currentSong = song;
         this.currentSongTitle.textContent = `${song.numero}. ${song.titulo}`;
+        this.hasUserInteracted = true;
         
         // Mostrar letras en quechua
         this.quechuaLyrics.innerHTML = '';
@@ -110,15 +111,18 @@ class SongManager {
             });
         }
 
-        // Mostrar el modal y actualizar el historial
+        // Mostrar el modal y actualizar historial
         this.lyricsContainer.classList.add('active');
         this.modalOpen = true;
-        history.pushState({ page: 'lyrics' }, '', window.location.pathname);
+        history.pushState({ modal: true }, '', window.location.pathname);
     }
 
     showSongList() {
         this.lyricsContainer.classList.remove('active');
         this.modalOpen = false;
+        if (this.hasUserInteracted) {
+            history.pushState({ list: true }, '', window.location.pathname);
+        }
     }
 
     setupTabNavigation() {
@@ -148,54 +152,71 @@ class SongManager {
         // Cerrar al hacer clic en el botón X
         this.closeLyricsButton.addEventListener('click', () => {
             if (this.modalOpen) {
-                history.back();
+                this.showSongList();
             }
         });
         
         // Cerrar al hacer clic fuera del modal
         this.lyricsContainer.addEventListener('click', (event) => {
             if (event.target === this.lyricsContainer && this.modalOpen) {
-                history.back();
+                this.showSongList();
             }
         });
 
         // Agregar manejador de tecla Escape
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && this.modalOpen) {
-                history.back();
-            }
-        });
-
-        // Manejar el evento popstate para el botón atrás
-        window.addEventListener('popstate', () => {
-            if (this.modalOpen) {
                 this.showSongList();
             }
         });
     }
 
-    setupExitConfirmation() {
-        // Asegurar que tenemos una entrada en el historial para la página principal
-        if (this.isFirstVisit) {
-            history.pushState({ page: 'main' }, '', window.location.pathname);
-            this.isFirstVisit = false;
-        }
+    setupMobileNavigation() {
+        let backPressCount = 0;
+        let backPressTimer;
 
+        // Manejar el botón de retroceso
         window.addEventListener('popstate', (event) => {
-            // Si el modal está abierto, simplemente cerrarlo
-            if (this.modalOpen) {
-                this.showSongList();
-                return;
-            }
-
-            // Si estamos en la lista principal, mostrar confirmación
             event.preventDefault();
-            if (window.confirm('¿Estás seguro que deseas salir de la aplicación?')) {
-                window.history.back();
+
+            if (this.modalOpen) {
+                // Si el modal está abierto, simplemente cerrarlo
+                this.showSongList();
             } else {
-                history.pushState({ page: 'main' }, '', window.location.pathname);
+                // Lógica de doble toque para salir
+                backPressCount++;
+                
+                if (backPressCount === 1) {
+                    // Primer toque del botón atrás
+                    window.alert('Presiona atrás nuevamente para salir de la aplicación');
+                    
+                    // Reiniciar el contador después de 2 segundos
+                    backPressTimer = setTimeout(() => {
+                        backPressCount = 0;
+                    }, 2000);
+
+                    // Mantener al usuario en la aplicación
+                    history.pushState({ list: true }, '', window.location.pathname);
+                } else if (backPressCount === 2) {
+                    // Segundo toque dentro del tiempo límite
+                    clearTimeout(backPressTimer);
+                    if (window.confirm('¿Estás seguro que deseas salir de la aplicación?')) {
+                        window.close();
+                        // Si window.close() no funciona (común en móviles)
+                        window.location.href = 'about:blank';
+                    } else {
+                        // Si cancela, reiniciar contador y mantener en la app
+                        backPressCount = 0;
+                        history.pushState({ list: true }, '', window.location.pathname);
+                    }
+                }
             }
         });
+
+        // Inicializar el historial
+        if (!this.modalOpen) {
+            history.pushState({ list: true }, '', window.location.pathname);
+        }
     }
 }
 
