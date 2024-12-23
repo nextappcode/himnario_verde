@@ -1,5 +1,8 @@
 name: Convert build files to APK and upload to Github Artifacts
-on: push
+on:
+  push:
+    branches:
+      - main  # Asegúrate de que esta es la rama adecuada
 
 jobs:
   build:
@@ -9,24 +12,80 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-     
-    - run: npm install
-    - run: npm run build
- 
-    - uses: darkshredder/web-to-app-action@main
-      with:
-          build-folder-path: "main" # Defaults to build, It is the folder where build files or html are stored
-          app-name: "Himnario Verde" # Defaults to MyApp
-          output-folder-path: "my-apks" # Defaults to apk/, Where final APK files are created
-    
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v2
-      with:
-        name: Final-apks
-        path: my-apks/ # Should be same as "output-folder-path"
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: |
+          if [ ! -f package-lock.json ]; then
+            npm install
+          else
+            npm ci
+          fi
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Install Capacitor
+        run: npm install @capacitor/cli @capacitor/core @capacitor/android
+
+      - name: Initialize Capacitor
+        run: npx cap init "himnario" "com.ejemplo.himnario"
+
+      - name: Add Android Platform
+        run: npx cap add android
+
+      - name: Capacitor copy
+        run: npx cap copy
+
+      - name: Generate icons and splash screen
+        run: |
+          if [ -d "./resources" ]; then 
+            npm install @capacitor/assets --save-dev 
+            npx capacitor-assets generate --android
+          fi
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: "11"
+
+      - name: Build app bundle
+        run: |
+          cd android && ./gradlew bundle && ./gradlew assembleDebug
+
+      - name: Create Keystore if missing
+        run: |
+          if [ ! -f android/release.keystore ]; then
+            keytool -genkey -v -keystore android/release.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias release -dname "CN=Android Debug,O=Android,C=US" -storepass "android" -keypass "android"
+          fi
+
+      - name: Sign dev build
+        run: jarsigner -keystore android/release.keystore -storepass "android" -signedjar ./android/app/build/outputs/bundle/release/app-release-signed.aab ./android/app/build/outputs/bundle/release/app-release.aab release
+
+      - name: Check folder content of android output
+        run: ls ./android/app/build/outputs/bundle/release
+
+      - name: Set Tag
+        id: current-datetime
+        run: echo "CURRENT_DATETIME=$(date +'%Y-%m-%d-%H_%M_%S%z')" >> "$GITHUB_OUTPUT"
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Final-apks
+          path: my-apks/  # Should be same as "output-folder-path"
