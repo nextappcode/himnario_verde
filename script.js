@@ -11,6 +11,7 @@ class SongManager {
         this.closeLyricsButton = document.getElementById('closeLyrics');
         this.modalOpen = false;
         this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        this.isFirstVisit = true;
         
         this.init();
         this.setupTabNavigation();
@@ -167,34 +168,34 @@ class SongManager {
 
         // Manejar el evento popstate para el botón atrás
         window.addEventListener('popstate', () => {
-            this.showSongList();
+            if (this.modalOpen) {
+                this.showSongList();
+            }
         });
     }
 
     setupExitConfirmation() {
-        window.addEventListener('beforeunload', (event) => {
-            // Solo mostrar confirmación si no es una recarga de la página
-            if (!window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD) {
-                event.preventDefault();
-                event.returnValue = '¿Estás seguro que deseas salir de la aplicación?';
-                return event.returnValue;
-            }
-        });
+        // Asegurar que tenemos una entrada en el historial para la página principal
+        if (this.isFirstVisit) {
+            history.pushState({ page: 'main' }, '', window.location.pathname);
+            this.isFirstVisit = false;
+        }
 
-        // Manejar el botón de retroceso del navegador
         window.addEventListener('popstate', (event) => {
-            if (!this.modalOpen) { // Solo si no está abierto el modal de letras
-                event.preventDefault();
-                if (window.confirm('¿Estás seguro que deseas salir de la aplicación?')) {
-                    window.history.back();
-                } else {
-                    history.pushState(null, '', window.location.pathname);
-                }
+            // Si el modal está abierto, simplemente cerrarlo
+            if (this.modalOpen) {
+                this.showSongList();
+                return;
+            }
+
+            // Si estamos en la lista principal, mostrar confirmación
+            event.preventDefault();
+            if (window.confirm('¿Estás seguro que deseas salir de la aplicación?')) {
+                window.history.back();
+            } else {
+                history.pushState({ page: 'main' }, '', window.location.pathname);
             }
         });
-
-        // Asegurar que tenemos al menos una entrada en el historial
-        history.pushState(null, '', window.location.pathname);
     }
 }
 
