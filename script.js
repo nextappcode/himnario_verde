@@ -10,10 +10,14 @@ class SongManager {
         this.castellanoLyrics = document.getElementById('castellanoLyrics');
         this.closeLyricsButton = document.getElementById('closeLyrics');
         this.modalOpen = false;
+        this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
         this.init();
         this.setupTabNavigation();
         this.setupModalClose();
+        if (this.isMobile) {
+            this.setupExitConfirmation();
+        }
     }
 
     async init() {
@@ -165,6 +169,32 @@ class SongManager {
         window.addEventListener('popstate', () => {
             this.showSongList();
         });
+    }
+
+    setupExitConfirmation() {
+        window.addEventListener('beforeunload', (event) => {
+            // Solo mostrar confirmación si no es una recarga de la página
+            if (!window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD) {
+                event.preventDefault();
+                event.returnValue = '¿Estás seguro que deseas salir de la aplicación?';
+                return event.returnValue;
+            }
+        });
+
+        // Manejar el botón de retroceso del navegador
+        window.addEventListener('popstate', (event) => {
+            if (!this.modalOpen) { // Solo si no está abierto el modal de letras
+                event.preventDefault();
+                if (window.confirm('¿Estás seguro que deseas salir de la aplicación?')) {
+                    window.history.back();
+                } else {
+                    history.pushState(null, '', window.location.pathname);
+                }
+            }
+        });
+
+        // Asegurar que tenemos al menos una entrada en el historial
+        history.pushState(null, '', window.location.pathname);
     }
 }
 
