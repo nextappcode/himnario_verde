@@ -107,10 +107,17 @@ class SongManager {
 
         // Mostrar el modal
         this.lyricsContainer.classList.add('active');
+        
+        // Agregar estado al historial para manejar el botón atrás
+        window.history.pushState({ modal: 'lyrics' }, '');
     }
 
     showSongList() {
         this.lyricsContainer.classList.remove('active');
+        // Remover el último estado del historial si existe
+        if (window.history.state && window.history.state.modal === 'lyrics') {
+            window.history.back();
+        }
     }
 
     setupTabNavigation() {
@@ -152,6 +159,13 @@ class SongManager {
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && this.lyricsContainer.classList.contains('active')) {
                 this.showSongList();
+            }
+        });
+
+        // Manejar el evento popstate para el botón atrás
+        window.addEventListener('popstate', (event) => {
+            if (this.lyricsContainer.classList.contains('active')) {
+                this.lyricsContainer.classList.remove('active');
             }
         });
     }
