@@ -9,10 +9,10 @@ class SongManager {
         this.quechuaLyrics = document.getElementById('quechuaLyrics');
         this.castellanoLyrics = document.getElementById('castellanoLyrics');
         this.closeLyricsButton = document.getElementById('closeLyrics');
+        this.modalOpen = false;
         
         this.init();
         this.setupTabNavigation();
-        this.setupScrollEffect();
         this.setupModalClose();
     }
 
@@ -105,19 +105,15 @@ class SongManager {
             });
         }
 
-        // Mostrar el modal
+        // Mostrar el modal y actualizar el historial
         this.lyricsContainer.classList.add('active');
-        
-        // Agregar estado al historial para manejar el botón atrás
-        window.history.pushState({ modal: 'lyrics' }, '');
+        this.modalOpen = true;
+        history.pushState({ page: 'lyrics' }, '', window.location.pathname);
     }
 
     showSongList() {
         this.lyricsContainer.classList.remove('active');
-        // Remover el último estado del historial si existe
-        if (window.history.state && window.history.state.modal === 'lyrics') {
-            window.history.back();
-        }
+        this.modalOpen = false;
     }
 
     setupTabNavigation() {
@@ -145,28 +141,29 @@ class SongManager {
 
     setupModalClose() {
         // Cerrar al hacer clic en el botón X
-        this.closeLyricsButton.addEventListener('click', () => this.showSongList());
+        this.closeLyricsButton.addEventListener('click', () => {
+            if (this.modalOpen) {
+                history.back();
+            }
+        });
         
         // Cerrar al hacer clic fuera del modal
         this.lyricsContainer.addEventListener('click', (event) => {
-            // Verificar si el clic fue en el overlay (fondo oscuro) y no en el contenido
-            if (event.target === this.lyricsContainer) {
-                this.showSongList();
+            if (event.target === this.lyricsContainer && this.modalOpen) {
+                history.back();
             }
         });
 
         // Agregar manejador de tecla Escape
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && this.lyricsContainer.classList.contains('active')) {
-                this.showSongList();
+            if (event.key === 'Escape' && this.modalOpen) {
+                history.back();
             }
         });
 
         // Manejar el evento popstate para el botón atrás
-        window.addEventListener('popstate', (event) => {
-            if (this.lyricsContainer.classList.contains('active')) {
-                this.lyricsContainer.classList.remove('active');
-            }
+        window.addEventListener('popstate', () => {
+            this.showSongList();
         });
     }
 }
