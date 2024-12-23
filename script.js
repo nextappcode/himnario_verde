@@ -13,6 +13,7 @@ class SongManager {
         this.init();
         this.setupTabNavigation();
         this.setupScrollEffect();
+        this.setupModalClose();
     }
 
     async init() {
@@ -132,6 +133,26 @@ class SongManager {
                     }
                 });
             });
+        });
+    }
+
+    setupModalClose() {
+        // Cerrar al hacer clic en el botón X
+        this.closeLyricsButton.addEventListener('click', () => this.showSongList());
+        
+        // Cerrar al hacer clic fuera del modal
+        this.lyricsContainer.addEventListener('click', (event) => {
+            // Verificar si el clic fue en el overlay (fondo oscuro) y no en el contenido
+            if (event.target === this.lyricsContainer) {
+                this.showSongList();
+            }
+        });
+
+        // Agregar manejador de tecla Escape
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && this.lyricsContainer.classList.contains('active')) {
+                this.showSongList();
+            }
         });
     }
 }
