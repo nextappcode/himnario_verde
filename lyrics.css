@@ -14,7 +14,7 @@
 }
 
 .lyrics-modal.active {
-    display: block;
+    display: flex;
     opacity: 1;
 }
 
@@ -26,6 +26,9 @@
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 4rem);
 }
 
 .modal-header {
@@ -66,7 +69,8 @@
 /* Tabs de Idiomas */
 .language-tabs {
     display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-card);
 }
 
 .tab {
@@ -78,19 +82,19 @@
     color: var(--text-secondary);
     font-size: 0.9rem;
     transition: all 0.3s ease;
-    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
 }
 
 .tab.active {
     color: var(--primary);
-    border-bottom-color: var(--primary);
+    border-top-color: var(--primary);
     font-weight: 500;
 }
 
 /* Contenido de Letras */
 .lyrics-content {
     padding: 1.5rem;
-    max-height: calc(100vh - 250px);
+    flex: 1;
     overflow-y: auto;
 }
 
@@ -155,58 +159,111 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .lyrics-modal.active {
+        background: var(--bg-card);
+    }
+
     .modal-content {
-        margin: 1rem;
-        max-height: 90vh;
-        width: auto;
+        margin: 0;
+        height: 100%;
+        max-width: 100%;
+        border-radius: 0;
+        position: relative;
     }
 
     .modal-header {
         padding: 1rem;
+        border-radius: 0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
     }
 
     .modal-header h2 {
         font-size: 1.1rem;
-    }
-
-    .language-tabs {
-        padding: 0;
-    }
-
-    .tab {
-        padding: 0.8rem;
-        font-size: 0.85rem;
+        padding-right: 2rem;
     }
 
     .lyrics-content {
+        flex: 1;
+        overflow-y: auto;
         padding: 1rem;
-        max-height: calc(100vh - 200px);
+        padding-bottom: calc(1rem + 60px);
+    }
+
+    .language-tabs {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+        z-index: 10;
+    }
+
+    .tab {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        border: none;
+        background: none;
+        transition: all 0.3s ease;
+    }
+
+    .tab.active {
+        color: var(--primary);
+        background: rgba(0, 166, 81, 0.1);
+    }
+
+    .tab-icon {
+        font-size: 1.2rem;
     }
 
     .lyrics-line {
-        padding: 0.6rem 1rem 0.6rem 2rem;
-        font-size: 1rem;
+        padding: 0.8rem 1rem 0.8rem 2.2rem;
+        font-size: 1.05rem;
         line-height: 1.6;
+        margin-bottom: 0.5rem;
     }
 
     .lyrics-line::before {
-        left: 0.6rem;
+        left: 0.8rem;
         font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .modal-content {
-        margin: 0.5rem;
-        border-radius: var(--radius-md);
-    }
-
     .modal-header {
         padding: 0.8rem;
     }
 
     .modal-header h2 {
         font-size: 1rem;
+    }
+
+    .lyrics-content {
+        padding: 0.8rem;
+        padding-bottom: calc(0.8rem + 55px);
+    }
+
+    .lyrics-line {
+        padding: 0.7rem 0.8rem 0.7rem 2rem;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .lyrics-line::before {
+        left: 0.6rem;
     }
 
     .tab {
@@ -214,44 +271,51 @@
         font-size: 0.8rem;
     }
 
-    .lyrics-content {
-        padding: 0.8rem;
-    }
-
-    .lyrics-line {
-        padding: 0.5rem 0.8rem 0.5rem 1.8rem;
-        font-size: 0.95rem;
-        line-height: 1.5;
+    .tab-icon {
+        font-size: 1.1rem;
     }
 
     .close-btn {
-        font-size: 1.2rem;
-        padding: 0.3rem;
-    }
-
-    .lyrics-line::before {
-        left: 0.6rem;
-        font-size: 1rem;
+        right: 0.5rem;
+        padding: 0.4rem;
     }
 }
 
-/* Orientación Landscape en móviles */
+/* Orientación Landscape */
 @media (max-height: 480px) and (orientation: landscape) {
     .modal-content {
-        margin: 0.5rem;
-        max-height: 95vh;
-    }
-
-    .lyrics-content {
-        max-height: calc(100vh - 150px);
+        height: 100%;
     }
 
     .modal-header {
         padding: 0.6rem;
     }
 
+    .lyrics-content {
+        padding: 0.6rem;
+        padding-bottom: calc(0.6rem + 45px);
+    }
+
     .language-tabs {
-        flex-wrap: wrap;
+        height: 45px;
+    }
+
+    .tab {
+        flex-direction: row;
+        padding: 0.5rem;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .tab-icon {
+        font-size: 1rem;
+    }
+
+    .lyrics-line {
+        padding: 0.5rem 0.8rem 0.5rem 1.8rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 0.3rem;
     }
 }
 
