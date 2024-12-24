@@ -4428,15 +4428,16 @@
           "/Llimphu sonqonchejwan reinonman yaykusun/",
           "/Angeleswan khuska Señorpa ladonman/",
           "/Munasqa hermanóy, chimpaykuy Cristoman/",
-          "/Mundota saqepuy, ama iskayrayaspa/",
+          "/Mundota saqepuy, ama iskayrayaspa/"
+        ],
+        "castellano": [
           "/Mi bendito Jesús está preparando/\t/Para los salvados la gloriosa mansión./",
           "/Habrá gozo eternal en el reino de Dios./",
           "/Los hijos del Señor, cantaremos a El./",
           "/Limpios de corazón a su reino entrarán./",
           "/Estarán gozosos en la diestra de Dios./",
           "/¿Desalentado estás? Oh hermano mío /\tAl bendito Jesús hoy consagra tu ser./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -4455,10 +4456,6 @@
           "May kusiymin pureyqa Jesusniyta qhatispa Paypa k'anchampi."
         ],
         "castellano": [
-          "Yachachiwajniy Jesusta qhatisaj, Cielokamapis Payllawan risaj.",
-          "Ña rikusajña cielopi Reyniyta; Paywan wiñaypaj samarikusaj.",
-          "May kusiymin pureyqa Jesusníy ta qhatispa. Paypa k'anchampi Paywan purisaj.",
-          "May kusiymin pureyqa Jesusniyta qhatispa Paypa k'anchampi.",
           "Quiero seguir las pisadas del Maestro, Quiero ir en pos de mi Rey y Señor; Y modelando por Él mi carácter, Canto con gozo a mi Redentor.",
           "Qué hermoso es seguir las pisadas del Maestro, Siempre",
           "en la luz, cerca de Jesús;",
@@ -4479,9 +4476,7 @@
         "quechua": [
           "Getsemaní lugarpeqa Señor Jesús orasharqa: \"Munayniyki kachun,",
           "Tatáy\",",
-          "Nispa, orarqa Pay."
-        ],
-        "castellano": [
+          "Nispa, orarqa Pay.",
           "Ashkha runas chawpipitaj Judas Iscariote risharqa.",
           "Jesusta rikuytawanri Much'aj chimpaykorqa.",
           "Runasqa chay ta rikuspa, Jesusta presocharqanku.",
@@ -4496,7 +4491,9 @@
           "Judas Iscariote risharqa. Jesusta rikuytawanri Much'aj chimpaykorqa.",
           "Chay cruzpi wañuspatajrí, Juchanchejta pampacharqa. Chayraykutaj, hermanosníy, Salvasqasña kanchej.",
           "Ashkha runas chawpipitaj Judas Iscariote risharqa.",
-          "Jesusta rikuytawanri Much'aj chimpaykorqa.",
+          "Jesusta rikuytawanri Much'aj chimpaykorqa."
+        ],
+        "castellano": [
           "En huerto de Getsemaní Oró Jesús al Padre Dios. Hágase en Mí tu voluntad,",
           "Así oró Jesús.",
           "En medio de la multitud, Judas Iscariote le vendió. Con sólo un beso entregó A Jesús el Señor.",
@@ -4526,14 +4523,14 @@
           "Juchaykiwan chimpaykullay./",
           "/Jamuy ari Paypi creej; salvacionta Pay qosonqa, Wiñay, wiñay kawsaytapis./",
           "/Sonqonchejpi kusikuna, runa masis chimpajtinku Jesucristo Salvadorman/",
-          "/Jaqay janaj pachapeqa angeles kusikushanku, Juchasapa salvakojtin./",
+          "/Jaqay janaj pachapeqa angeles kusikushanku, Juchasapa salvakojtin./"
+        ],
+        "castellano": [
           "/Este mundo tenebroso, se hunde más en el pecado. Reina el pesar, llanto y dolor./",
           "/Nunca yo puedo encontrar paz y gozo en mi vida. Reina el pesar, llanto y dolor./",
           "/Oh, amigo, acude a Cristo. En su amor Él te ofrece Paz y perdón, vida eternal./",
           "/Si creyeres en Jesús ahora mismo te dará El Paz y perdón, vida eternal./",
-          "/Los salvados nos gozamos cuando el pecador se allega"
-        ],
-        "castellano": [
+          "/Los salvados nos gozamos cuando el pecador se allega",
           "Al Salvador que da salud./",
           "/Allá en el cielo también cuantos angeles se gozan Si el pecador viene a Jesús./"
         ]
@@ -4545,14 +4542,14 @@
       "letra": {
         "quechua": [
           "Dios wajyasunki qanta, Palabranta uyariy. Atipaytaj juchata, kusiypitaj kawsanki.",
-          "/Cristo kutimonqaña mana qhepákusunchu."
-        ],
-        "castellano": [
+          "/Cristo kutimonqaña mana qhepákusunchu.",
           "Tukuy Paywan ripusun janaj pacha llajtaman./",
           "Jesusta sirvikuspa, munakuywan llank'asun; Salvasqataj kasunchej Diospa tukuy wawasnin.",
           "/Cristo kutimonqaña mana qhepákusunchu. Tukuy Paywan ripusun janaj pacha llajtaman./",
           "Kutirimuy, kawsaqéy, salvacionta mask'aspa. Mana uyariwaj chay, nina larwayman rinki.",
-          "/Cristo kutimonqaña mana qhepákusunchu. Tukuy Paywan ripusun janaj pacha llajtaman./",
+          "/Cristo kutimonqaña mana qhepákusunchu. Tukuy Paywan ripusun janaj pacha llajtaman./"
+        ],
+        "castellano": [
           "El Señor te llama hoy, apresúrate en venir. Pues desecha la maldad, tendrás gozo eternal./",
           "/Cuando venga El Señor, El nos arrebatará De este mundo temporal a su reino eternal./",
           "/En la viña del Señor trabajemos con vigor, Porque Cristo nos salvó por su muerte en la cruz./",
@@ -4574,10 +4571,10 @@
           "/Kusisqa rishani janaj pachaman, Almasta pusaspa Salvawajniyman/",
           "Llakeyqa kampuni kay pachapeqa. Onqoypis, waqaypis mana tukukoj. Janaj pachapiraj kusikamusun.",
           "Chayrayku, hermanos, listos suyana.",
-          "/Kusisqa rishani janaj pachaman,"
+          "/Kusisqa rishani janaj pachaman,",
+          "Almasta pusaspa Salvawajniyman/"
         ],
         "castellano": [
-          "Almasta pusaspa Salvawajniyman/",
           "Oh bendito Cristo, venimos a Ti.",
           "Con nuestras plegarias buscamos a Ti. En tus tiernos brazos cuídanos, oh Dios, Hasta que nos llames al celeste hogar.",
           "/Me siento gozoso porque al cielo voy, Llevando más almas al Señor Jesús./",
@@ -4603,7 +4600,9 @@
           "Jaqay cielopeqa qori wasiy tiyapuwan./",
           "/Qori pilluta qopuwanqa, Jesusniy, llank'asqaymanta./",
           "/Janaj pachaman, Señor, Qanwan khuska noqa risaj,",
-          "Jaqay cielopeqa qori wasiy tiyapuwan./",
+          "Jaqay cielopeqa qori wasiy tiyapuwan./"
+        ],
+        "castellano": [
           "/Bendito Jesús, hoy te imploro Que me ayudes en las pruebas./",
           "/En la patria celestial Gozaré en tu presencia.",
           "Donde las mansiones ya las tengo preparadas./",
@@ -4613,8 +4612,7 @@
           "/A Jesús guiaré muchas almas, Me promete recompensa./",
           "/En la patria celestial Gozaré en tu presencia.",
           "Donde las mansiones ya las tengo preparadas./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -4630,14 +4628,14 @@
           "Qori arpaspi Pay man ta k isaj /",
           "/Gloría kachun Señor Jesusman, Janaj pachapeqa Paywan kawsasaj./",
           "/Señor Jesuswan noqa kawsasaj Wiñay wiñaypaj janaj pachapi./",
-          "/Gloría kachun Señor Jesusman, Janaj pachapeqa Paywan kawsasaj./",
+          "/Gloría kachun Señor Jesusman, Janaj pachapeqa Paywan kawsasaj./"
+        ],
+        "castellano": [
           "/Serviré al Señor con ferviente amor. Pronto gozaré con mi Salvador./",
           "/Gloria sea al bendito Jesús. Por toda eternidad con El viviré.",
           "/Cristo mi Señor, en su grande amor, El nos redimió, muriendo en la cruz./",
           "/Gloria sea al bendito Jesús. Por toda eternidad con El viviré.",
-          "/En aquel día, glorioso será,"
-        ],
-        "castellano": [
+          "/En aquel día, glorioso será,",
           "Con arpas de oro cantaré al Señor./",
           "/Gloria sea al bendito Jesús. Por toda eternidad con El viviré.",
           "/Con mi buen Jesús, con Él gozaré.",
@@ -4663,7 +4661,9 @@
           "/Mana uyarikojta t'aqarparenqa",
           "Wiñay, wiñay waqayman, nina larwayman./",
           "/lnti urmanqa, killa urmanqa.",
-          "Mundo khatatirenqa, ñak'ariy kanqa./",
+          "Mundo khatatirenqa, ñak'ariy kanqa./"
+        ],
+        "castellano": [
           "/Cristo pronto volverá entre las nubes. Con su gloria y poder Él descenderá./",
           "/El sol, la luna oscurecerán.",
           "Todo el mundo temblará, que dolor será./",
@@ -4676,8 +4676,7 @@
           "/Al que rechaza a Jesús, le juzgará Él. A la muerte eterna le condenará./",
           "/El sol, la luna oscurecerán.",
           "Todo el mundo temblará, que dolor será./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -4689,11 +4688,11 @@
           "Palabran kasuspa, kusiytaqa tarisunchej. Tukuy sonqonchejwan Payllataña yupaychana.",
           "Llakikuspallaqa, ni imata tarisunchu.",
           "Dios Tatawan kaspa, Payllawanña kusikusun.",
-          "Kawsayninchejtaqa Dios Tataman qopunachej, Nisqanta kasuspa Palabranta willamuna.",
-          "Cuando venga el Señor arrebatará a los suyos. Serviremos a Él todos fervorosamente.",
-          "Leyendo la Biblia hallamos paz en el alma. Cantaremos a Él, muy gozosos alabando."
+          "Kawsayninchejtaqa Dios Tataman qopunachej, Nisqanta kasuspa Palabranta willamuna."
         ],
         "castellano": [
+          "Cuando venga el Señor arrebatará a los suyos. Serviremos a Él todos fervorosamente.",
+          "Leyendo la Biblia hallamos paz en el alma. Cantaremos a Él, muy gozosos alabando.",
           "Por las amarguras, soluciones no hallaremos. Sólo con el Señor felicidad hallaremos.",
           "Serviremos\ta\tDios,\tnuestras\tvidas\tconsagrando, Obedientes a Él y anunciando su Evangelio."
         ]
@@ -4712,10 +4711,10 @@
           "/Jesucristo jamunanta Qan suyashankipunichu? Pajtá qan qhepakushawaj Nina larwaypaj/",
           "/Jesucristo kachasojtin, Paymantaqa willaramuy. Tukuy kallpaykiwan llank'ay",
           "Paypa chajrampiy/",
-          "/Jesucristo jamunanta Qan suyashankipunichu? Pajtá qan qhepakushawaj Nina larwaypaj/",
-          "/Jesucristo pronto vendrá, Ese día muy cerca está."
+          "/Jesucristo jamunanta Qan suyashankipunichu? Pajtá qan qhepakushawaj Nina larwaypaj/"
         ],
         "castellano": [
+          "/Jesucristo pronto vendrá, Ese día muy cerca está.",
           "Para estar con el Salvador, Preparémonos./",
           "/Ese día pronto será.",
           "¿Preparado tú estarás? Si te quedares sin Jesús Tu perecerás./",
@@ -4734,9 +4733,7 @@
       "letra": {
         "quechua": [
           "/Munakuyta tarisun Dios Tatanchejpi. Tukuy sonqo Paypi creespa, Kawsayta almanchejpaj tarisun./",
-          "/Kallpachay sonqoyta, Dios Tatáy,"
-        ],
-        "castellano": [
+          "/Kallpachay sonqoyta, Dios Tatáy,",
           "Ama urmanaypaj juchapi. Qanmin waqaychawanki./",
           "/Junt'achiway, Diosníy, Espirituykiwan Supaytapis atipanaypaj;",
           "Pisi kallpayojllaraj kashani./",
@@ -4744,7 +4741,9 @@
           "Qanmin waqaychawanki./",
           "/Ama qonqakusuyta yanapariway, Munakusuyta yachachiway Kamachisqaykita junt'anaypaj/",
           "/Kallpachay sonqoyta, Dios Tatáy, Ama urmanaypaj juchapi.",
-          "Qanmin waqaychawanki./",
+          "Qanmin waqaychawanki./"
+        ],
+        "castellano": [
           "Nuestro Dios nos amó con inmenso amor. Vida eterna El nos ofrece",
           "Si aceptamos de todo corazón.",
           "Fortalece mi vida, oh Dios. Al pecado jamás cederé.",
@@ -4783,10 +4782,10 @@
           "P'ampasqankumanta Kinsa p'unchayman",
           "Wañuyta atiparqa Pay.",
           "/Jesucristoj wañusqanrayku Salvasqa kani./",
-          "/Chayrayku takini kusiywan, Gloria Señorman./",
-          "Fue Jesús a orar en Getsemani Yuna turba le apresó."
+          "/Chayrayku takini kusiywan, Gloria Señorman./"
         ],
         "castellano": [
+          "Fue Jesús a orar en Getsemani Yuna turba le apresó.",
           "Yclamó a una voz: \"Crucifícale\" YAl nazareno Rey Jesús.",
           "Por su muerte en la cruz me salvó. Gloria sea a El.",
           "Yo le alabo a El por su amor. Gloria sea a El.",
@@ -4821,10 +4820,10 @@
           "/Janaj pacha gloriampeqa Kawsamusun Salvadorwan",
           "Winay wiñaynimpaj. Gloria Señorman./",
           "Jesusnichej jamonqaña Wawasninman atiyninwan.",
-          "/Wiñay kawsaypi kusikamusunchej/",
-          "/Pronto vuelve Jesucristo,"
+          "/Wiñay kawsaypi kusikamusunchej/"
         ],
         "castellano": [
+          "/Pronto vuelve Jesucristo,",
           "En las nubes Él vendrá,",
           "A los suyos a llevar, con su gran poder./",
           "Jesús vendrá con su poder A los suyos nos llevará.",
@@ -4852,10 +4851,10 @@
           "/Qallariymanta tukukuykama Señor Jesusqa kallpata qowan./",
           "/Janaj pachapi mosoj llajtaqa; Llakiyllapuni kay pachapeqa./",
           "/Mana rejsispa Jesucristota, Nina larwaypi ñak'arenqanku./",
-          "/Janaj pachapi mosoj llajtaqa; Llakiyllapuni kay pachapeqa./",
-          "Está conmigo el Señor Jesús. Él me cuidará de toda maldad."
+          "/Janaj pachapi mosoj llajtaqa; Llakiyllapuni kay pachapeqa./"
         ],
         "castellano": [
+          "Está conmigo el Señor Jesús. Él me cuidará de toda maldad.",
           "Allá en el cielo, hay gozo sin par. Aquí en la tierra hay sólo el dolor.",
           "El me ha Librado de las tinieblas Hoy me protege en su grande amor",
           "Allá en el cielo, hay gozo sin par. Aquí en la tierra hay sólo el dolor.",
@@ -4873,12 +4872,13 @@
         "quechua": [
           "/Diospi confíaspa tukuy kawsayniypi, Qhatisaj kusiywan Dios Tatanchejta/",
           "/Qhatisaj Diosniyta; Paylla pusawanqa. Qhatisaj kusiywan Dios Tatanchejta./",
-          "/Chinkasqa kashajtiy, Dios Tatay tariwan. Qhatisaj kusiywan Dios Tatanchejta./",
+          "/Chinkasqa kashajtiy, Dios Tatay tariwan. Qhatisaj kusiywan Dios Tatanchejta./"
+        ],
+        "castellano": [
           "/Seguiré a Cristo con toda mi alma. Estoy muy contento, Cristo me salvó./",
           "/Seguiré a Cristo doquiera me guíe. Llegaré al cielo y reinaré con El./",
           "/Vagaba en tinieblas, Cristo me ha llamado Seguiré a Cristo a mi Salvador./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -4891,7 +4891,9 @@
           "/Rey Herodestaj manchayta phiñarikorqa Waj jatun Reytaj Judapi kasqanmanta/",
           "/Chay Herodestaj soldadosta kamacherqa Qhari wawasta wañurachimunankuta./",
           "/Diosta Tatanchejtaj Joseman willaricherqa Ayqenankuta Egipto llajta, chaynejman./",
-          "/Chay Jesustajrí runasta salvaj jamorqa. Kunan chimpaykuy, salvasuyta munasunki./",
+          "/Chay Jesustajrí runasta salvaj jamorqa. Kunan chimpaykuy, salvasuyta munasunki./"
+        ],
+        "castellano": [
           "/Cristo ha nacido allí en Belén de Judea./",
           "/Virgen María dio luz a Cristo el Salvador./",
           "/El rey Herodes al saberlo se enalteció./",
@@ -4902,8 +4904,7 @@
           "/A que huyeran muy pronto al lugar de Egipto./",
           "/Así, el Señor Jesucristo vino al mundo./",
           "/Acude hoy mismo que Jesús quiere salvarte./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -4922,10 +4923,10 @@
           "Cheqamanta Cristota qhatejqa, Jesusta sirvej kamachisnimpis, Iglesiapis Cristojta novian jiña Wiñaypaj Jesuswan kawsamonqa.",
           "Janajpacha llajtapi laqhayay ni kanqachu,",
           "Intej q'oñi ruphaynin nillataj kanqañachu. Nanaypis, llakikuypis nillataj kanqañachu. Chaypacha Jesucristo Reynillanchej",
-          "Wiñaypaj sonqochajninchej kanqa.",
-          "Cuan glorioso será aquel momento, Cuando venga Jesús el Salvador."
+          "Wiñaypaj sonqochajninchej kanqa."
         ],
         "castellano": [
+          "Cuan glorioso será aquel momento, Cuando venga Jesús el Salvador.",
           "Los salvados reunidos como hermanos, Bienvenida daremos al Señor.",
           "No habrá necesidad, de la luz el resplandor. Ni el sol dará su luz, ni tampoco su calor.",
           "Allí llanto no habrá, ni tristeza, ni dolor, Porque entonces Jesús el Rey del cielo, Para siempre será Consolador.",
@@ -4976,11 +4977,11 @@
           "/Señorníy, yanapaway,",
           "Qanllapi confiakuyta. Llakiyniypipis sonqochariway/",
           "/Kaypi kani, Dios Tatáy, Sonqoy ukhuman k'anchaykamuway./",
-          "/Mayllapipis kaspaqa, Qanllapajña takisaj."
+          "/Mayllapipis kaspaqa, Qanllapajña takisaj.",
+          "Tukuysonqoywan yupaychasqayki./",
+          "/Kaypi kani, Dios Tatáy, Sonqoy ukhuman k'anchaykamuway./"
         ],
         "castellano": [
-          "Tukuysonqoywan yupaychasqayki./",
-          "/Kaypi kani, Dios Tatáy, Sonqoy ukhuman k'anchaykamuway./",
           "/Enséñame, oh Padre Dios, Tu Palabra es verdad.",
           "A la humanidad testificaré./",
           "/Cuanto anhelo mi Señor. Ilumíname,",
@@ -5034,8 +5035,7 @@
       "numero": "174",
       "titulo": "​Señor Jesucristo (Fa Mayor)\tF. P.",
       "letra": {
-        "quechua": [],
-        "castellano": [
+        "quechua": [
           "Señor Jesucristo kaypachaman jamun,",
           "/Yawarninta jich'an",
           "Kay mundota salvay munaspa/ Amaña waqaychu nitaj llakikuychu,",
@@ -5043,7 +5043,9 @@
           "Wiñay wiñaypaj kusikuyta/",
           "Kunampacha chimpay, Señorta jap'ikuy.",
           "/Paypi creejtiyki,",
-          "Almayki samariy tarenqa./",
+          "Almayki samariy tarenqa./"
+        ],
+        "castellano": [
           "Señor Jesucristo vino al mundo a salvar.",
           "/Por este mundo vil",
           "Su preciosa sangre Él derramó./",
@@ -5070,7 +5072,9 @@
           "/Janaj pachapi Señor Jesusqa/",
           "/Ña pusawasunña wawasnintaqa./",
           "/Munasqa hermano ama urmaychu/",
-          "/Wakichikuy ari Paywan rinapaj/",
+          "/Wakichikuy ari Paywan rinapaj/"
+        ],
+        "castellano": [
           "/Allá en el cielo el Señor Jesús/",
           "/Preparado tiene moradas de oro./",
           "/Allá en el cielo el Señor Jesús/",
@@ -5081,8 +5085,7 @@
           "/En cualquier momento se los llevará./",
           "/Querido hermano, nunca desmayes./",
           "/Preparado espera, El te llevará./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5096,10 +5099,10 @@
           "/Qay kawsayniypi, Señor Jesús, Qanllatañamin sirvisqayki.",
           "Mundo imasta saqepuspa. Qanllatañamin sirvisqayki/",
           "/Señor Jesusniy, waqaychaway, Tentacionespi kallpachaway.",
-          "Juchaman ama urmanaypaj Espirituyki k'anchawachun./",
-          "/Cuando vagaba en el error, Mi buen Jesús ya me encontró. Me libertó Él de mi maldad."
+          "Juchaman ama urmanaypaj Espirituyki k'anchawachun./"
         ],
         "castellano": [
+          "/Cuando vagaba en el error, Mi buen Jesús ya me encontró. Me libertó Él de mi maldad.",
           "Mil gracias doy a mi Salvador./",
           "/Ayúdame, oh Señor Jesús, Cuando me vengan tentaciones Nunca más cederé al Tentador. Con tu poder yo podré vencer/",
           "/Hoy me consagro a Ti, Señor, Toda mi vida a tu labor.",
@@ -5119,7 +5122,9 @@
           "Kutirina Jesusman, almanchejta khuyajman. Kawsayta qowasunchej, chinkanqataj llakeyqa.",
           "/Jesusniy salvawanña, noqarayku wañunña. Jatun munakuyninwan wiñay kawsayta qowan./",
           "Kutirina Jesusman, waqaychawajninchejman. Wiñay wiñaynintimpaj tiyasunchej wasimpi.",
-          "/Jesusniy salvawanña, noqarayku wañunña. Jatun munakuyninwan wiñay kawsayta qowan./",
+          "/Jesusniy salvawanña, noqarayku wañunña. Jatun munakuyninwan wiñay kawsayta qowan./"
+        ],
+        "castellano": [
           "Volveremos a Jesús, al amante Salvador. Perdonó Él la maldad, con su sangre nos lavó.",
           "/Me salvó ya mi Jesús, muriendo en la cruz por mí. En su gran y tierno amor; vida eterna El me da./",
           "Volveremos a Jesús, quien nuestras almas amó. Vida eterna nos dará, mas tristezas ya no habrán.",
@@ -5127,8 +5132,7 @@
           "Volveremos a Jesús, al Señor el Protector.",
           "Moraremos pues con Él en su patria celestial.",
           "/Me salvó ya mi Jesús, muriendo en la cruz por mí. En su gran y tierno amor; vida eterna El me da./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5148,11 +5152,11 @@
           "Pruebaspis, llakiypis kajtin, Diosllamin khuyakuwarqa,",
           "/Khuyakuwarqa, khuyakuwarqa/",
           "Diospaj mana llank'aspa, Almay llakisqa kashan.",
-          "/Imaynata chimpasaj Mana Diospaj llank'aspa? Chaymá llakichishawan./",
-          "Cristo ofrece la salvación A los que van a perdición.",
-          "/Gozo hallarán por la eternidad./"
+          "/Imaynata chimpasaj Mana Diospaj llank'aspa? Chaymá llakichishawan./"
         ],
         "castellano": [
+          "Cristo ofrece la salvación A los que van a perdición.",
+          "/Gozo hallarán por la eternidad./",
           "De servir no dejaré",
           "A nuestro Señor Jesús.",
           "/Lamentable sería Presentarme al Señor",
@@ -5180,13 +5184,13 @@
           "/May kusisqa kashani Salvawajniywan. Paymin jatun Reyneyqa, Paypi suyani/",
           "/Rikuytapuni munani Salvawajniyta. Jaqay k'anchaj llajtapi Payman takisaj/",
           "/Tukuy tentacionespi noqawan kashan. Payqa k'anchawampuni tukuy ñanniypi/",
-          "/Rikuytapuni munani Salvawajniyta. Jaqay k'anchaj llajtapi Payman takisaj/",
+          "/Rikuytapuni munani Salvawajniyta. Jaqay k'anchaj llajtapi Payman takisaj/"
+        ],
+        "castellano": [
           "/Con gran gozo voy con Dios, al celeste hogar. Yo las almas guiando estoy, a mi Salvador./",
           "/Cuanto anhelo ver a Cristo, a mi Salvador. En aquél glorioso hogar, yo le cantaré./",
           "/Yo me siento muy feliz, con mi Salvador. Es mi soberano Rey, en Él confiaré./",
-          "/Cuanto anhelo ver a Cristo, a mi Salvador."
-        ],
-        "castellano": [
+          "/Cuanto anhelo ver a Cristo, a mi Salvador.",
           "En aquél glorioso hogar, yo le cantaré./"
         ]
       }
@@ -5267,13 +5271,13 @@
           "/Evangeliomanta parlamunanchejpaj Diospa atiyninwan sapa ujninchej/",
           "Pichus creej Jesuspa sutimpi Paymin salvo kanqa ñak'ariymanta.",
           "/Evangeliomanta parlamunanchejpaj Diospa atiyninwan sapa ujninchej/",
-          "Jesucristo phiiyuspi riporqa,"
-        ],
-        "castellano": [
+          "Jesucristo phiiyuspi riporqa,",
           "Ajinallatataj urayk'amonqa.",
           "/Evangeliomanta parlamunanchejpaj Diospa atiyninwan sapa ujninchej/",
           "Jesús nerqa wakichimunanta Ashkha tiyanasta janaj pachapi.",
-          "/Evangeliomanta parlamunanchejpaj Diospa atiyninwan sapa ujninchej/",
+          "/Evangeliomanta parlamunanchejpaj Diospa atiyninwan sapa ujninchej/"
+        ],
+        "castellano": [
           "Jesucristo, antes de ascender,",
           "Dejó un mandamiento; debemos cumplir.",
           "/Vayan por el mundo, llevando",
@@ -5356,9 +5360,7 @@
         "quechua": [
           "Mana, Cristo jiña amigo kanchu,\tNi ujpis, ni ujpis.",
           "Ni pi Pay jiña almasninchejta",
-          "Salvayta atinchu."
-        ],
-        "castellano": [
+          "Salvayta atinchu.",
           "Tukuy sufrisqasninchejmanta Pay yalchan, khuyawanchejtaj.",
           "Mana Cristo jiña amigo kanchu, Ni ujpis, ni ujpis.",
           "Ni pi Pay jiña chhika Santochu, Ni pipis, ni pipis.",
@@ -5369,7 +5371,9 @@
           "Ni ujpis, ni ujpis.",
           "Maypitaj Pay jiña Salvadorta Tarisun, tarisun?",
           "Mana Pay man ni pipis nikunchu, Ni pipis, ni pipis.",
-          "Tukuy sufrisqasninchejmanta Pay yachan, khuyawanchejtaj. Mana Cristo jiña amigo kanchu, Ni ujpis, ni ujpis.",
+          "Tukuy sufrisqasninchejmanta Pay yachan, khuyawanchejtaj. Mana Cristo jiña amigo kanchu, Ni ujpis, ni ujpis."
+        ],
+        "castellano": [
           "No hay cuál Jesús otro fiel amigo, No lo hay, no lo hay.",
           "Otro que pueda salvar las almas, No lo hay, no lo hay.",
           "Conoce todas nuestras luchas, Y solo Él nos sostendrá.",
@@ -5403,7 +5407,9 @@
           "/Jesusllapi tarinki atipana kallpata/",
           "/Paypa yanapayninwan Supayta atipanki./",
           "/Tuta p'unchay oraspa Palabranta leespa/",
-          "/Diosllapitaj confíaspa, kallpataqa jap'inki./",
+          "/Diosllapitaj confíaspa, kallpataqa jap'inki./"
+        ],
+        "castellano": [
           "/Jesucristo el Señor, Él te llama con amor./",
           "/Ven a Cristo sin tardar, salvación Él te dará./",
           "/Satanás nunca duerme y trabaja sin cesar,/",
@@ -5412,8 +5418,7 @@
           "/Con la ayuda del Señor, venceremos a Satán./",
           "/Meditando en la Biblia y orando más al Señor./",
           "/Venceremos todo el mal, confiando en el Señor./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5426,11 +5431,11 @@
           "Ma wañuyta manchanichu, Cristoqa Salvawajniy; Ni Señorpaj llank'anichu, chaymá llakiy noqapaj.",
           "Jinallachu Diosman risaj, ch'usajllachu chayasaj? Tiempoyta usuchispalla, imawantaj chimpasaj?",
           "Usuchini tiempoytaqa, Diosman mana qospalla; Purishaspa kay pachapi, Supayllaman qoj kani.",
-          "Jinallachu Diosman risaj, ch'usajllachu chayasaj? Tiempoyta usuchispalla, imawantaj chimpasaj?",
-          "¿He de ir sin ningún fruto que presente a mi Señor? No le llevo ni un trofeo, ¡Ni servicio de valor!",
-          "¿He de ir sin ningún fruto? ¿he de ver a Cristo así? Con el tiempo mal gastado, ¿He de presentarme allí?"
+          "Jinallachu Diosman risaj, ch'usajllachu chayasaj? Tiempoyta usuchispalla, imawantaj chimpasaj?"
         ],
         "castellano": [
+          "¿He de ir sin ningún fruto que presente a mi Señor? No le llevo ni un trofeo, ¡Ni servicio de valor!",
+          "¿He de ir sin ningún fruto? ¿he de ver a Cristo así? Con el tiempo mal gastado, ¿He de presentarme allí?",
           "De la muerte no me asusto; Cristo es ya mi Salvador. Para Él nada yo he hecho; esto, sí, me da dolor.",
           "¿He de ir sin ningún fruto? ¿he de ver a Cristo así? Con el tiempo mal gastado, ¿He de presentarme allí?",
           "Darle todo yo quisiera de los años que perdí,",
@@ -5451,7 +5456,9 @@
           "/K'ayachus, minchhachus Jesús wajyawanqa./",
           "/Llank'asqaymantataj t'inkata qowanqa/",
           "/Janaj pachapitaj salvos kajkunawan/",
-          "/Diospa ñawpaqempi may kusiypi kasaj/",
+          "/Diospa ñawpaqempi may kusiypi kasaj/"
+        ],
+        "castellano": [
           "/Cuando yo vagaba, Jesús me ha llamado./",
           "/Derramó su sangre para rescatarme./",
           "/Cuando yo medito en su amor tan grande./",
@@ -5460,8 +5467,7 @@
           "/Él me ha prometido, recompensa darme./",
           "/Allá en el cielo con todos los salvos/",
           "/De la vida eterna gozaré por siempre./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5476,7 +5482,9 @@
           "/Jesusqa yawarnín jich'arqa Qanraykumin cruzpi/",
           "/Almaykí ranterqa may jatun preciowan./",
           "/Jesusqa pusawan ñanninta Kusiypi, k'anchaypi/",
-          "/Laqhapi purejtiy Paylla k'anchaykuwan./",
+          "/Laqhapi purejtiy Paylla k'anchaykuwan./"
+        ],
+        "castellano": [
           "/Jesucristo en su amor",
           "Llamando está a todo el pecador./",
           "/Amigo, acepta a Él, salvación te dará./",
@@ -5486,8 +5494,7 @@
           "/Su preciosa sangre, tus deudas ya pagó./",
           "/Me guiará el Señor por su senda De luz y Verdad./",
           "/Aún en la oscuridad, Jesús me alumbrará./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5500,15 +5507,16 @@
           "/Maqanakuna kashan Supaypa contrampi. Cristopi kallpa kashan atipaiiapaj./",
           "/Capitanninchej Cristo atipallampuni, Payllapi confiakuspa atipasunchej./",
           "/Jap'ikunachej ari Diospa armasninta, Oraspa tuta p'unchay, Biblia leespa./",
-          "/Capitanninchej Cristo atipallampuni, Payllapi confiakuspa atipasunchej./",
+          "/Capitanninchej Cristo atipallampuni, Payllapi confiakuspa atipasunchej./"
+        ],
+        "castellano": [
           "/En Cristo bien unidos vamos adelante. El Capitán es Cristo. Vamos a vencer./",
           "/El Capitán es Cristo, siempre victorioso. Estemos pues seguros, vamos a vencer./",
           "/Satanás el maligno está a nuestro frente. Venceremos la lucha con El Capitán./",
           "/El Capitán es Cristo, siempre victorioso. Estemos pues seguros, vamos a vencer./",
           "/Tomemos la armadura del Señor Jesús. Meditando y orando vamos a vencer./",
           "/El Capitán es Cristo, siempre victorioso. Estemos pues seguros, vamos a vencer./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5544,16 +5552,16 @@
           "/Salvación kasqanmantaqa, Manachu qan yacharqanki? Tentaciompitaj kashanki, Almaykitaj llakikushan./",
           "/Mana runaqa yachanchu Ni cielopi angelespis.",
           "Tata Diosllamin yachashan Jayk'ajchus kutimunanta./",
-          "/Kay mundopi parlashanku Mana juicio kananmanta."
-        ],
-        "castellano": [
+          "/Kay mundopi parlashanku Mana juicio kananmanta.",
           "Amataj chayta creeychu, Cristollawanña kawsana./",
           "/Mana runaqa yachanchu Ni cielopi angelespis.",
           "Tata Diosllamin yachashan Jayk'ajchus kutimunanta./",
           "/Chayraykumin, hermanito, Usqayllata llank'ananchej,",
           "Uj llimphu kawsayninchejwan Cristollataña suyaspa/",
           "/Mana runaqa yachanchu Ni cielopi angelespis.",
-          "Tata Diosllamin yachashan Jayk'ajchus kutimunanta./",
+          "Tata Diosllamin yachashan Jayk'ajchus kutimunanta./"
+        ],
+        "castellano": [
           "/Salvación hay sólo en Cristo, En la fe nunca vaciles.",
           "Cuando cedes al pecado, Te seguirán mil pesares./",
           "/De la venida de Cristo Nadie sabe de la hora. Ni los ángeles tampoco.",
@@ -5610,13 +5618,13 @@
       "letra": {
         "quechua": [
           "Diosníy, mañakamuyki Qanman qonqorikuspa: \"Juchasniyta pampachay, kawsayta qoway\".",
-          "Diosman kutisaj, usqayta risaj, Sonqoy amaraj chiriyashajtin."
-        ],
-        "castellano": [
+          "Diosman kutisaj, usqayta risaj, Sonqoy amaraj chiriyashajtin.",
           "Ama chiri sonqolla kay pachapi kasajchu, Aswan kusiy sonqowan yupaychasqayki.",
           "Diosman kutisaj, usqayta risaj, Sonqoy amaraj chiriyashajtin.",
           "Kawsayniypi tiyakuy, almaypi kallpachaway; Kamachiyki junt'asaj kay pachapeqa.",
-          "Diosman kutisaj, usqayta risaj, Sonqoy amaraj chiriyashajtin.",
+          "Diosman kutisaj, usqayta risaj, Sonqoy amaraj chiriyashajtin."
+        ],
+        "castellano": [
           "Bondadoso mi Jesús, hoy me rindo a tus pies.\tCon tu sangre lávame de toda maldad.",
           "Muy presuroso volveré a Dios. Mientras yo pueda, serviré a El.",
           "Te imploro mi Jesús, me concedas tu poder. De todo mi corazón yo te alabaré.",
@@ -5637,7 +5645,9 @@
           "/Chimpaykuna tukuy juchanchejwan./",
           "/Dios Tatanchej tukuyta wajyashan/ /Salvanampaj nina larwaymanta /",
           "/Kunampacha Jesusman qayllaykuy./",
-          "/Salvacionta ama qhesachaychu./",
+          "/Salvacionta ama qhesachaychu./"
+        ],
+        "castellano": [
           "/Dios el Padre mandó a Jesucristo/",
           "/Para darnos Salvación eterna./",
           "/Jesucristo su perdón te ofrece./",
@@ -5646,8 +5656,7 @@
           "/Del infierno Él quiere salvarles./",
           "/Ahora mismo acéptale a Cristo./",
           "/No rechaces salvación eterna./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5663,15 +5672,16 @@
           "Cristoman mana chimpayman chayqa?/",
           "/Munasqa Dios Tatáy, chimpamuyki, Jap'ikapuway makisniykipi./",
           "/Almaypa kawsaynenqa Maymantaj kunan rinman,",
-          "Cristoman mana chimpayman chayqa?/",
+          "Cristoman mana chimpayman chayqa?/"
+        ],
+        "castellano": [
           "/Cuando en las tinieblas yo vagaba, Jesús es la luz que me rescató./",
           "/Si en Cristo no buscaba La salvación de mi alma, Iba a perecer eternamente./",
           "/Por tu senda de luz yo andaré. Sólo para Tí podré yo vivir./",
           "/Si en Cristo no buscaba La salvación de mi alma, Iba a perecer eternamente./",
           "/Vengo a tus pies, oh bendito Dios, En tus brazos ya podré descansar./",
           "/Si en Cristo no buscaba La salvación de mi alma, Iba a perecer eternamente./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5684,15 +5694,16 @@
           "/Cielopis, jallp'apis makiykej ruwasqan./",
           "/Intipis, killapis mayta t'ukuchiwan/",
           "/Tukuy ima kajpis makiykej ruwasqan./",
-          "/Jallp'ata, qhorasta atiyniyki ruwan./",
+          "/Jallp'ata, qhorasta atiyniyki ruwan./"
+        ],
+        "castellano": [
           "/Oh\tJehová,\tmi\tSeñor,\tcuan\tgrande\tes\ttu\tnombre./",
           "/Alabanzas a Tí cantaré con fervor./",
           "/Los cielos, la tierra, creación es de Tí./",
           "/A los astros al ver pienso en tu poder./",
           "/Obra de tus dedos es toda creación./",
           "/Las plantas, los mares hablan de tu poder./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5707,7 +5718,9 @@
           "/\"Pichus\tNoqaman\tjamonqa,\tchay runaspajpis",
           "Salvacionqa wakisqa'/",
           "/Kunampachataj qowasun Allin kusiy sonqota./",
-          "/Kamachisqanman jinata kawsayninchejpi Kunan purina tiyan./",
+          "/Kamachisqanman jinata kawsayninchejpi Kunan purina tiyan./"
+        ],
+        "castellano": [
           "/Jesucristo llama a todos:",
           "\"Venid a mí y descansad\"./",
           "/Sigamos a Jesucristo muy presurosos, Obedeceremos a Él./",
@@ -5715,8 +5728,7 @@
           "/A todos los que reciben a Jesucristo Ofrece la salvación./",
           "/Jesús puede concedernos Paz y gozo en nuestro ser./",
           "/Consagrando nuestras vidas a Jesucristo, Tendremos gozo sin par./"
-        ],
-        "castellano": []
+        ]
       }
     },
     {
@@ -5733,10 +5745,10 @@
           "\"Sonqosniykichejta qowaychej\", nin, \"Qhatiwaychejtaj cheqan ñanniypi\". Cruzpi wañuspa, rantiwarqanchej.",
           "Kunan chimpaykuwajchej Payllaman.",
           "Gloriata qona Salvadorman,",
-          "Kusikuna, kusikuna. Kusichiwanchej munakuynin, Kusikuyninchej Pay.",
-          "Gozo la santa Palabra leer, Cosas preciosas allí puedo ver;"
+          "Kusikuna, kusikuna. Kusichiwanchej munakuynin, Kusikuyninchej Pay."
         ],
         "castellano": [
+          "Gozo la santa Palabra leer, Cosas preciosas allí puedo ver;",
           "Y, sobre todo, que el gran Redentor Es de los niños el tierno Pastor.",
           "Con alegría yo cantaré",
           "Al Redentor, tierno Pastor.",
@@ -5758,15 +5770,15 @@
       "letra": {
         "quechua": [
           "Kunampacha willamuna tukuyman Jesuspa cruzninmanta, Sut'inchaspa Santo Evangeliota Señorllata sirvispa.",
-          "Purimuna usqhayllata Willaramuspa runasman. Salvadormanta willaspa, Purimuna usqhayta."
-        ],
-        "castellano": [
+          "Purimuna usqhayllata Willaramuspa runasman. Salvadormanta willaspa, Purimuna usqhayta.",
           "Yachachina Diospa tukuy nisqanta Yawar jich'asqanmanta,",
           "Juchastapis Paylla llimphuchasqanta Paypi creejkunata.",
           "Purimuna usqhayllata Willaramuspa runasman. Salvadormanta willaspa, Purimuna usqhayta.",
           "Mundontinman willamuna kusiywan Cruzpi wañusqanmanta.",
           "Yupaychana Jesús Salvadorllata Salvawasqanchejmanta.",
-          "Purimuna usqhayllata Willaramuspa runasman. Salvadormanta willaspa, Purimuna usqhayta.",
+          "Purimuna usqhayllata Willaramuspa runasman. Salvadormanta willaspa, Purimuna usqhayta."
+        ],
+        "castellano": [
           "Cual pendón hermoso despleguemos hoy La bandera de la cruz.",
           "La verdad del Evangelio el blasón Del soldado de Jesús.",
           "Adelante, adelante,",
