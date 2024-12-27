@@ -43,9 +43,9 @@ function configurarBusqueda() {
 
 // Función para actualizar los himnos periódicamente
 async function actualizarHimnos() {
-    try {
-        const response = await fetch('letras.json');
-        const data = await response.json();
+        try {
+            const response = await fetch('letras.json');
+            const data = await response.json();
         const songList = document.getElementById('songList');
         
         // Solo actualizar si hay cambios
@@ -147,7 +147,7 @@ async function mostrarLetra(numero, idioma) {
             const modalContent = document.getElementById('modal-content');
             modalContent.innerHTML = '';
             
-            // Agregar estado al historial antes de mostrar el modal
+            // Agregar estado a la historia del navegador
             window.history.pushState({ modal: true }, '');
             
             // Header con número y títulos
@@ -239,10 +239,7 @@ function configurarEventos() {
 
     // Manejar el botón atrás del navegador
     window.addEventListener('popstate', function(event) {
-        if (event.state && event.state.modal) {
-            // Si hay un estado del modal, mantener en la aplicación
-            window.history.pushState({ modal: true }, '');
-        } else {
+        if (event.state === null) {
             cerrarModal();
         }
     });
@@ -251,18 +248,18 @@ function configurarEventos() {
 // Función para cerrar el modal
 function cerrarModal() {
     const modal = document.getElementById('modal');
-    if (modal.classList.contains('active')) {
-        modal.classList.remove('active');
-    }
+    modal.classList.remove('active');
 }
+
+// Prevenir que el botón atrás cierre la aplicación
+window.addEventListener('load', function() {
+    window.history.pushState({ inicial: true }, '');
+});
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
     cargarHimnos();
     configurarEventos();
-    
-    // Agregar estado inicial al historial
-    window.history.replaceState({ modal: false }, '');
     
     // Actualizar cada 5 segundos
     setInterval(actualizarHimnos, 5000);
