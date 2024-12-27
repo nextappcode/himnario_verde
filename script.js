@@ -1,227 +1,245 @@
-class SongManager {
-    constructor() {
-        this.songs = [];
-        this.currentSong = null;
-        this.searchInput = document.getElementById('searchInput');
-        this.songList = document.getElementById('songList');
-        this.lyricsContainer = document.getElementById('lyricsOverlay');
-        this.currentSongTitle = document.getElementById('currentSongTitle');
-        this.quechuaLyrics = document.getElementById('quechuaLyrics');
-        this.castellanoLyrics = document.getElementById('castellanoLyrics');
-        this.closeLyricsButton = document.getElementById('closeLyrics');
-        this.modalOpen = false;
-        this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        this.hasUserInteracted = false;
-        
-        this.init();
-        this.setupTabNavigation();
-        this.setupModalClose();
-        if (this.isMobile) {
-            this.setupMobileNavigation();
-        }
-    }
+// Cargar y mostrar los himnos
+let himnosData = []; // Variable global para almacenar los himnos
 
-    async init() {
-        try {
-            const response = await fetch('letras.json');
-            const data = await response.json();
-            this.songs = data.himnos;
-            
-            console.log(`Himnos cargados: ${this.songs.length}`);
-            this.renderSongList();
-            this.setupEventListeners();
-        } catch (error) {
-            console.error('Error cargando los himnos:', error);
-            this.songList.innerHTML = '<div class="empty-message">Error al cargar los himnos</div>';
-        }
-    }
-
-    setupEventListeners() {
-        this.searchInput.addEventListener('input', () => this.handleSearch());
-        this.closeLyricsButton.addEventListener('click', () => this.showSongList());
-    }
-
-    handleSearch() {
-        const searchTerm = this.searchInput.value.toLowerCase();
-        const filteredSongs = this.songs.filter(song => 
-            song.numero.toString().includes(searchTerm) ||
-            song.titulo.toLowerCase().includes(searchTerm)
-        );
-        this.renderSongList(filteredSongs);
-    }
-
-    renderSongList(songs = this.songs) {
-        this.songList.innerHTML = '';
-        
-        if (!Array.isArray(songs) || songs.length === 0) {
-            this.songList.innerHTML = '<div class="empty-message">No se encontraron himnos</div>';
-            return;
-        }
-        
-        songs.forEach(song => {
-            const card = document.createElement('div');
-            card.className = 'song-card';
-            
-            card.innerHTML = `
-                <div class="song-number-wrapper">
-                    <span class="song-number">${song.numero}</span>
-                </div>
-                <div class="song-info">
-                    <h3 class="song-title">${song.titulo}</h3>
-                    <div class="song-languages">
-                        ${song.letra.quechua ? '<span class="language-tag">Quechua</span>' : ''}
-                        ${song.letra.castellano ? '<span class="language-tag">Castellano</span>' : ''}
-                    </div>
-                </div>
-            `;
-            
-            card.addEventListener('click', () => this.displayLyrics(song));
-            this.songList.appendChild(card);
-        });
-    }
-
-    displayLyrics(song) {
-        this.currentSong = song;
-        this.currentSongTitle.textContent = `${song.numero}. ${song.titulo}`;
-        this.hasUserInteracted = true;
-        
-        // Mostrar letras en quechua
-        this.quechuaLyrics.innerHTML = '';
-        if (song.letra.quechua) {
-            song.letra.quechua.forEach(line => {
-                if (line.trim()) {
-                    const p = document.createElement('p');
-                    p.className = 'lyrics-line';
-                    p.textContent = line;
-                    this.quechuaLyrics.appendChild(p);
-                }
-            });
-        }
-
-        // Mostrar letras en castellano
-        this.castellanoLyrics.innerHTML = '';
-        if (song.letra.castellano) {
-            song.letra.castellano.forEach(line => {
-                if (line.trim()) {
-                    const p = document.createElement('p');
-                    p.className = 'lyrics-line';
-                    p.textContent = line;
-                    this.castellanoLyrics.appendChild(p);
-                }
-            });
-        }
-
-        // Mostrar el modal y actualizar historial
-        this.lyricsContainer.classList.add('active');
-        this.modalOpen = true;
-        history.pushState({ modal: true }, '', window.location.pathname);
-    }
-
-    showSongList() {
-        this.lyricsContainer.classList.remove('active');
-        this.modalOpen = false;
-        if (this.hasUserInteracted) {
-            history.pushState({ list: true }, '', window.location.pathname);
-        }
-    }
-
-    setupTabNavigation() {
-        const tabs = document.querySelectorAll('.tab');
-        const sections = document.querySelectorAll('.lyrics-section');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetTab = tab.dataset.tab;
-                
-                // Actualizar tabs
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Actualizar secciones
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === `${targetTab}Lyrics`) {
-                        section.classList.add('active');
-                    }
-                });
-            });
-        });
-    }
-
-    setupModalClose() {
-        // Cerrar al hacer clic en el botón X
-        this.closeLyricsButton.addEventListener('click', () => {
-            if (this.modalOpen) {
-                this.showSongList();
-            }
-        });
-        
-        // Cerrar al hacer clic fuera del modal
-        this.lyricsContainer.addEventListener('click', (event) => {
-            if (event.target === this.lyricsContainer && this.modalOpen) {
-                this.showSongList();
-            }
-        });
-
-        // Agregar manejador de tecla Escape
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && this.modalOpen) {
-                this.showSongList();
-            }
-        });
-    }
-
-    setupMobileNavigation() {
-        let backPressCount = 0;
-        let backPressTimer;
-
-        // Manejar el botón de retroceso
-        window.addEventListener('popstate', (event) => {
-            event.preventDefault();
-
-            if (this.modalOpen) {
-                // Si el modal está abierto, simplemente cerrarlo
-                this.showSongList();
-            } else {
-                // Lógica de doble toque para salir
-                backPressCount++;
-                
-                if (backPressCount === 1) {
-                    // Primer toque del botón atrás
-                    window.alert('Presiona atrás nuevamente para salir de la aplicación');
-                    
-                    // Reiniciar el contador después de 2 segundos
-                    backPressTimer = setTimeout(() => {
-                        backPressCount = 0;
-                    }, 2000);
-
-                    // Mantener al usuario en la aplicación
-                    history.pushState({ list: true }, '', window.location.pathname);
-                } else if (backPressCount === 2) {
-                    // Segundo toque dentro del tiempo límite
-                    clearTimeout(backPressTimer);
-                    if (window.confirm('¿Estás seguro que deseas salir de la aplicación?')) {
-                        window.close();
-                        // Si window.close() no funciona (común en móviles)
-                        window.location.href = 'about:blank';
-                    } else {
-                        // Si cancela, reiniciar contador y mantener en la app
-                        backPressCount = 0;
-                        history.pushState({ list: true }, '', window.location.pathname);
-                    }
-                }
-            }
-        });
-
-        // Inicializar el historial
-        if (!this.modalOpen) {
-            history.pushState({ list: true }, '', window.location.pathname);
-        }
+async function cargarHimnos() {
+    try {
+        const response = await fetch('letras.json');
+        const data = await response.json();
+        himnosData = data.himnos; // Guardamos los himnos en la variable global
+        mostrarHimnos(himnosData);
+        configurarBusqueda();
+    } catch (error) {
+        console.error('Error al cargar los himnos:', error);
     }
 }
 
-// Inicializar la aplicación
+// Función para filtrar himnos
+function filtrarHimnos(query) {
+    if (!query) return himnosData;
+    
+    query = query.toLowerCase().trim();
+    return himnosData.filter(himno => {
+        const numero = himno.numero.toString();
+        const tituloQuechua = (himno.titulo_quechua || himno.titulo || '').toLowerCase();
+        const tituloCastellano = (himno.titulo_castellano || '').toLowerCase();
+        
+        return numero.includes(query) || 
+               tituloQuechua.includes(query) || 
+               tituloCastellano.includes(query);
+    });
+}
+
+// Configurar la búsqueda en tiempo real
+function configurarBusqueda() {
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value;
+        const himnosFiltrados = filtrarHimnos(query);
+        mostrarHimnos(himnosFiltrados);
+    });
+}
+
+// Función para actualizar los himnos periódicamente
+async function actualizarHimnos() {
+    try {
+        const response = await fetch('letras.json');
+        const data = await response.json();
+        const songList = document.getElementById('songList');
+        
+        // Solo actualizar si hay cambios
+        const currentContent = songList.innerHTML;
+        const tempDiv = document.createElement('div');
+        mostrarHimnos(data.himnos, tempDiv);
+        
+        if (tempDiv.innerHTML !== currentContent) {
+            himnosData = data.himnos; // Actualizamos los datos globales
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput ? searchInput.value : '';
+            const himnosFiltrados = filtrarHimnos(query);
+            mostrarHimnos(himnosFiltrados);
+        }
+    } catch (error) {
+        console.error('Error al actualizar los himnos:', error);
+    }
+}
+
+// Mostrar los himnos en la interfaz
+function mostrarHimnos(himnos, container = document.getElementById('songList')) {
+    container.innerHTML = '';
+    himnos.sort((a, b) => parseInt(a.numero) - parseInt(b.numero));
+
+    himnos.forEach(himno => {
+        const songCard = document.createElement('div');
+        songCard.className = 'song-card';
+        
+        const songNumber = document.createElement('div');
+        songNumber.className = 'song-number';
+        songNumber.textContent = himno.numero;
+        
+        const songTitles = document.createElement('div');
+        songTitles.className = 'song-titles';
+        
+        const tituloQuechua = document.createElement('div');
+        tituloQuechua.className = 'song-title quechua';
+        tituloQuechua.textContent = himno.titulo_quechua || himno.titulo || '';
+        tituloQuechua.style.cursor = 'pointer';
+        tituloQuechua.dataset.numero = himno.numero;
+        tituloQuechua.dataset.idioma = 'quechua';
+        
+        songTitles.appendChild(tituloQuechua);
+        
+        if (himno.titulo_castellano) {
+            const tituloCastellano = document.createElement('div');
+            tituloCastellano.className = 'song-title castellano';
+            tituloCastellano.textContent = himno.titulo_castellano;
+            tituloCastellano.style.cursor = 'pointer';
+            tituloCastellano.dataset.numero = himno.numero;
+            tituloCastellano.dataset.idioma = 'castellano';
+            songTitles.appendChild(tituloCastellano);
+        }
+        
+        const songButtons = document.createElement('div');
+        songButtons.className = 'song-buttons';
+        
+        const btnQuechua = document.createElement('button');
+        btnQuechua.className = 'btn-quechua';
+        btnQuechua.textContent = 'Quechua';
+        btnQuechua.dataset.numero = himno.numero;
+        btnQuechua.dataset.idioma = 'quechua';
+        
+        const btnCastellano = document.createElement('button');
+        btnCastellano.className = 'btn-castellano';
+        btnCastellano.textContent = 'Castellano';
+        btnCastellano.dataset.numero = himno.numero;
+        btnCastellano.dataset.idioma = 'castellano';
+        
+        songButtons.appendChild(btnQuechua);
+        songButtons.appendChild(btnCastellano);
+        
+        songCard.appendChild(songNumber);
+        songCard.appendChild(songTitles);
+        songCard.appendChild(songButtons);
+        
+        container.appendChild(songCard);
+    });
+
+    // Agregar event listeners después de crear los elementos
+    container.querySelectorAll('.song-title, .btn-quechua, .btn-castellano').forEach(element => {
+        element.addEventListener('click', function() {
+            const numero = this.dataset.numero;
+            const idioma = this.dataset.idioma;
+            mostrarLetra(numero, idioma);
+        });
+    });
+}
+
+// Función para mostrar la letra
+async function mostrarLetra(numero, idioma) {
+    try {
+        const response = await fetch('letras.json');
+        const data = await response.json();
+        const himno = data.himnos.find(h => h.numero === numero.toString());
+        
+        if (himno && himno.letra && himno.letra[idioma]) {
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = '';
+            
+            // Header con número y títulos
+            const header = document.createElement('div');
+            header.className = 'modal-header';
+            
+            const numeroTitulo = document.createElement('div');
+            numeroTitulo.className = 'numero-titulo';
+            numeroTitulo.textContent = `${numero}.`;
+            
+            const titulos = document.createElement('div');
+            titulos.className = 'titulos-container';
+            
+            const tituloCastellano = document.createElement('div');
+            tituloCastellano.className = 'titulo-castellano';
+            tituloCastellano.textContent = himno.titulo_castellano || '';
+            
+            const tituloQuechua = document.createElement('div');
+            tituloQuechua.className = 'titulo-quechua';
+            tituloQuechua.textContent = himno.titulo_quechua || himno.titulo || '';
+            
+            titulos.appendChild(tituloCastellano);
+            titulos.appendChild(tituloQuechua);
+            
+            header.appendChild(numeroTitulo);
+            header.appendChild(titulos);
+            
+            // Contenedor de pestañas de idioma
+            const languageTabs = document.createElement('div');
+            languageTabs.className = 'language-tabs';
+            
+            // Pestaña Quechua
+            const quechuaTab = document.createElement('div');
+            quechuaTab.className = `tab ${idioma === 'quechua' ? 'active' : ''}`;
+            quechuaTab.innerHTML = '<span class="tab-icon">👤</span> Quechua';
+            quechuaTab.dataset.numero = numero;
+            quechuaTab.dataset.idioma = 'quechua';
+            
+            // Pestaña Castellano
+            const castellanoTab = document.createElement('div');
+            castellanoTab.className = `tab ${idioma === 'castellano' ? 'active' : ''}`;
+            castellanoTab.innerHTML = '<span class="tab-icon">📄</span> Castellano';
+            castellanoTab.dataset.numero = numero;
+            castellanoTab.dataset.idioma = 'castellano';
+            
+            languageTabs.appendChild(quechuaTab);
+            languageTabs.appendChild(castellanoTab);
+            
+            // Agregar event listeners a las pestañas
+            [quechuaTab, castellanoTab].forEach(tab => {
+                tab.addEventListener('click', function() {
+                    mostrarLetra(this.dataset.numero, this.dataset.idioma);
+                });
+            });
+            
+            // Contenedor de letra
+            const lyricsContainer = document.createElement('div');
+            lyricsContainer.className = 'lyrics-container';
+            
+            // Agregar cada línea de la letra
+            himno.letra[idioma].forEach((linea, index) => {
+                const lineaElement = document.createElement('div');
+                lineaElement.className = 'lyrics-line';
+                lineaElement.textContent = linea;
+                lyricsContainer.appendChild(lineaElement);
+            });
+            
+            modalContent.appendChild(header);
+            modalContent.appendChild(languageTabs);
+            modalContent.appendChild(lyricsContainer);
+            
+            // Mostrar el modal con animación
+            modal.classList.add('active');
+        }
+    } catch (error) {
+        console.error('Error al cargar la letra:', error);
+    }
+}
+
+// Configurar eventos al cargar el documento
+function configurarEventos() {
+    // Cerrar modal al hacer clic fuera
+    const modal = document.getElementById('modal');
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+}
+
+// Inicializar
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Iniciando aplicación...');
-    const songManager = new SongManager();
+    cargarHimnos();
+    configurarEventos();
+    
+    // Actualizar cada 5 segundos
+    setInterval(actualizarHimnos, 5000);
 }); 

@@ -3,7 +3,7 @@
         {
             "numero": "1",
             "titulo_quechua": "Ujchasqas chimpamuyku (Re menor)",
-            "titulo_castellano": "",
+            "titulo_castellano": "este es un titulo modificado",
             "letra": {
                 "quechua": [
                     "Ujchasqas chimpamuyku Qanman, Diosníy Tatáy, Tukuy reverenciawan Qanmanta uyarikoj.",
@@ -491,8 +491,6 @@
         },
         {
             "numero": "17",
-            "titulo_quechua": "Jesucristo Salvadorqa (Fa Mayor)",
-            "titulo_castellano": "Hallé un buen amigo",
             "letra": {
                 "quechua": [
                     "Jesucristo Salvadorqa may sumaj amigoy; Ruwasqasninmanta willaramusaj.",
@@ -520,7 +518,9 @@
                     "En la casa de su Padre, mansión de luz y paz, Do el creyente fiel con El ha de morar.",
                     "Llegándome a la gloria, con Él yo estaré Y\tcontemplaré su rostro siempre allí; Con los santos redimidos gozoso cantaré: \"Grandes cosas Cristo ha hecho para mí\/"
                 ]
-            }
+            },
+            "titulo_quechua": "Jesucristo Salvadorqa (Fa Mayor)",
+            "titulo_castellano": ""
         },
         {
             "numero": "18",
@@ -13109,6 +13109,19 @@
             },
             "titulo_quechua": "Kay pachapeqa kawsayniypi (Si Menor)",
             "titulo_castellano": ""
+        },
+        {
+            "numero": "500",
+            "titulo_quechua": "mosoq titulo nisqa",
+            "titulo_castellano": "nuevo titulo en castellano",
+            "letra": {
+                "quechua": [
+                    "letra en quechua"
+                ],
+                "castellano": [
+                    "letra en castellano"
+                ]
+            }
         }
     ]
 }

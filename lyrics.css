@@ -1,194 +1,161 @@
-/* Modal de Letras */
-.lyrics-modal {
+/* Modal */
+.modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: var(--bg-modal);
-    backdrop-filter: blur(8px);
-    display: none;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
     z-index: 1000;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.lyrics-modal.active {
+.modal.active {
     display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 1;
+    visibility: visible;
 }
 
 .modal-content {
-    background: var(--bg-card);
-    width: 100%;
-    max-width: 700px;
-    margin: 2rem auto;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
     position: relative;
+    background: #1e2329;
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+    max-height: 90vh;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    height: calc(100% - 4rem);
+    overflow-y: auto;
+    color: var(--text-primary);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
 }
 
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+/* Header del modal */
 .modal-header {
-    background: var(--gradient-primary);
+    background: #00a651;
     color: white;
-    padding: 1.5rem;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     text-align: center;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
 }
 
-.modal-header h2 {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin: 0;
+.numero-titulo {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    display: inline;
 }
 
-.close-btn {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    line-height: 1;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+.titulos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 100%;
 }
 
-.close-btn:hover {
-    opacity: 1;
+.titulo-castellano {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
 }
 
-/* Tabs de Idiomas */
+.titulo-quechua {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Pestañas de idioma */
 .language-tabs {
     display: flex;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: var(--bg-card);
+    background: #1e2329;
+    padding: 0.8rem;
+    gap: 0.5rem;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .tab {
-    flex: 1;
-    padding: 1rem;
-    border: none;
-    background: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem;
     cursor: pointer;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
     transition: all 0.3s ease;
-    border-top: 2px solid transparent;
 }
 
 .tab.active {
-    color: var(--primary);
-    border-top-color: var(--primary);
-    font-weight: 500;
+    color: #00a651;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-/* Contenido de Letras */
-.lyrics-content {
-    padding: 1.5rem;
+.tab-icon {
+    font-size: 1.1rem;
+}
+
+/* Contenedor de letra */
+.lyrics-container {
+    padding: 1rem;
+    padding-bottom: 2rem;
     flex: 1;
     overflow-y: auto;
 }
 
-.lyrics-section {
-    display: none;
-}
-
-.lyrics-section.active {
-    display: block;
-}
-
-/* Estilo de lista en cascada */
 .lyrics-line {
-    padding: 0.75rem 1.2rem 0.75rem 2.5rem;
+    padding: 0.7rem 1rem 0.7rem 2rem;
     position: relative;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-primary);
-    border-left: 2px solid transparent;
-    margin-bottom: 0.35rem;
-    transition: all 0.2s ease;
-    animation: slideIn 0.3s ease-out backwards;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    transition: background 0.3s ease;
 }
 
 .lyrics-line::before {
-    content: '♪';
+    content: "♪";
     position: absolute;
-    left: 1rem;
-    opacity: 0.5;
-    color: var(--primary);
-    font-size: 1.1rem;
+    left: 0.5rem;
+    color: #00a651;
+    opacity: 0.7;
 }
 
 .lyrics-line:hover {
-    background: rgba(0, 166, 81, 0.05);
-    border-left-color: var(--primary);
-    padding-left: 2.5rem;
-}
-
-/* Animaciones */
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .lyrics-modal.active {
-        background: var(--bg-card);
+    .modal {
+        padding: 0;
     }
 
     .modal-content {
-        margin: 0;
-        height: 100%;
+        width: 100%;
         max-width: 100%;
-        border-radius: 0;
-        position: relative;
-    }
-
-    .modal-header {
-        padding: 1rem;
-        border-radius: 0;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-
-    .modal-header h2 {
-        font-size: 1.1rem;
-        padding-right: 2rem;
-    }
-
-    .lyrics-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 1rem;
-        padding-bottom: calc(1rem + 60px);
+        height: 100vh;
+        max-height: 100vh;
+        margin: 0;
+        transform: translateY(0);
     }
 
     .language-tabs {
@@ -196,152 +163,232 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: var(--bg-card);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        top: auto;
+        background: #1e2329;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: space-around;
-        padding: 0;
-        z-index: 10;
+        padding: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .tab {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+    .lyrics-container {
+        padding-bottom: calc(4rem + 60px);
+    }
+}
+
+.song-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    transition: transform 0.2s ease;
+}
+
+.song-number {
+    flex: 0 0 35px;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.9rem;
+    padding-top: 2px;
+}
+
+.song-titles {
+    flex: 1;
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.song-title {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+}
+
+.song-title.castellano {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: normal;
+}
+
+.song-buttons {
+    display: flex;
+    gap: 4px;
+    margin-left: 8px;
+    align-self: center;
+}
+
+.btn-quechua, .btn-castellano {
+    padding: 4px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: var(--text-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-quechua:hover, .btn-castellano:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .song-card {
+        padding: 8px 6px;
+        gap: 4px;
         align-items: center;
-        justify-content: center;
-        gap: 0.3rem;
-        padding: 0.8rem;
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        border: none;
-        background: none;
-        transition: all 0.3s ease;
     }
 
-    .tab.active {
-        color: var(--primary);
-        background: rgba(0, 166, 81, 0.1);
-    }
-
-    .tab-icon {
-        font-size: 1.2rem;
-    }
-
-    .lyrics-line {
-        padding: 0.8rem 1rem 0.8rem 2.2rem;
-        font-size: 1.05rem;
-        line-height: 1.6;
-        margin-bottom: 0.5rem;
-    }
-
-    .lyrics-line::before {
-        left: 0.8rem;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .modal-header {
-        padding: 0.8rem;
-    }
-
-    .modal-header h2 {
-        font-size: 1rem;
-    }
-
-    .lyrics-content {
-        padding: 0.8rem;
-        padding-bottom: calc(0.8rem + 55px);
-    }
-
-    .lyrics-line {
-        padding: 0.7rem 0.8rem 0.7rem 2rem;
-        font-size: 1rem;
-        line-height: 1.5;
-    }
-
-    .lyrics-line::before {
-        left: 0.6rem;
-    }
-
-    .tab {
-        padding: 0.6rem;
+    .song-number {
+        flex: 0 0 22px;
         font-size: 0.8rem;
+        padding-top: 0;
     }
 
-    .tab-icon {
-        font-size: 1.1rem;
+    .song-titles {
+        flex: 1;
+        padding: 0 4px;
+        min-width: 0;
+        gap: 1px;
     }
 
-    .close-btn {
-        right: 0.5rem;
-        padding: 0.4rem;
-    }
-}
-
-/* Orientación Landscape */
-@media (max-height: 480px) and (orientation: landscape) {
-    .modal-content {
-        height: 100%;
-    }
-
-    .modal-header {
-        padding: 0.6rem;
-    }
-
-    .lyrics-content {
-        padding: 0.6rem;
-        padding-bottom: calc(0.6rem + 45px);
-    }
-
-    .language-tabs {
-        height: 45px;
-    }
-
-    .tab {
-        flex-direction: row;
-        padding: 0.5rem;
-        gap: 0.4rem;
+    .song-title {
         font-size: 0.8rem;
+        line-height: 1.3;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        letter-spacing: -0.1px;
     }
 
-    .tab-icon {
-        font-size: 1rem;
+    .song-title.castellano {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 1;
     }
 
-    .lyrics-line {
-        padding: 0.5rem 0.8rem 0.5rem 1.8rem;
-        font-size: 0.9rem;
-        line-height: 1.4;
-        margin-bottom: 0.3rem;
+    .song-buttons {
+        display: flex;
+        gap: 2px;
+        margin-left: 2px;
+        flex-shrink: 0;
+    }
+
+    .btn-quechua, .btn-castellano {
+        padding: 2px 4px;
+        font-size: 0.65rem;
+        min-width: 42px;
+        letter-spacing: -0.3px;
+        border-radius: 3px;
     }
 }
 
-/* Modo Oscuro */
-@media (prefers-color-scheme: dark) {
-    .modal-content {
-        background: var(--bg-dark);
-    }
+/* Modal de letras */
+.lyrics-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
-    .lyrics-line {
-        color: rgba(255, 255, 255, 0.9);
-    }
+.lyrics-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+}
 
-    .lyrics-line:hover {
-        background: rgba(255, 255, 255, 0.05);
-    }
+.lyrics-modal .modal-content {
+    background: #1e2329;
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+    max-height: 90vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    color: var(--text-primary);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
 
-    .language-tabs {
-        border-bottom-color: rgba(255, 255, 255, 0.1);
-    }
+.lyrics-modal.active .modal-content {
+    transform: translateY(0);
+}
 
-    .tab {
-        color: rgba(255, 255, 255, 0.7);
+/* Responsive */
+@media (max-width: 768px) {
+    .lyrics-modal .modal-content {
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        margin: 0;
+        transform: translateY(0);
     }
+}
 
-    .tab.active {
-        color: var(--primary-light);
+/* Animación del corazón */
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
     }
+    25% {
+        transform: scale(1.1);
+    }
+    40% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.donate-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.donate-button:hover {
+    background: var(--primary-dark);
+}
+
+.donate-icon {
+    display: inline-block;
+    animation: heartbeat 1.3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.donate-button:hover .donate-icon {
+    animation-duration: 1s;
 } 

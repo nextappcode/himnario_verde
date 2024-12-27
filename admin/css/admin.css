@@ -1,0 +1,232 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f7fa;
+    color: #2c3e50;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.himno-item {
+    border: 1px solid #e1e8ed;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.himno-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.himno-item h3 {
+    margin: 0;
+    flex: 0 0 150px;
+    color: #34495e;
+    font-size: 1.2em;
+}
+
+.himno-item .titulos {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.himno-item .titulos p {
+    margin: 5px 0;
+}
+
+.himno-item .botones {
+    display: flex;
+    gap: 10px;
+}
+
+/* Estilos para las ventanas modales */
+.editor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.editor form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.editor h2 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e1e8ed;
+    font-size: 1.8em;
+}
+
+textarea {
+    width: 100%;
+    min-height: 200px;
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+button.eliminar {
+    background-color: #e74c3c;
+}
+
+button.eliminar:hover {
+    background-color: #c0392b;
+}
+
+.acciones {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #34495e;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Estilos para los mensajes */
+.mensaje {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 1001;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.mensaje.exito {
+    background-color: #2ecc71;
+}
+
+.mensaje.error {
+    background-color: #e74c3c;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Estilos para los botones de formulario */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e1e8ed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .himno-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .himno-item .botones {
+        margin-top: 15px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .editor form {
+        margin: 10px;
+        padding: 20px;
+    }
+} 

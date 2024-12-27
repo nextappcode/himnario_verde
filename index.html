@@ -42,16 +42,13 @@
             <div class="songs-container">
                 <div class="songs-header">
                     <h2>Himnos</h2>
-                    <div class="view-options">
-                        <button class="view-btn active" data-view="grid">
-                            <span>⊞</span>
-                        </button>
-                        <button class="view-btn" data-view="list">
-                            <span>≡</span>
-                        </button>
-                    </div>
+                    <button class="view-btn active" data-view="grid">
+                        <span>⊞</span>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <span>≡</span>
+                    </button>
                 </div>
-                
                 <div class="songs-grid" id="songList"></div>
             </div>
 
@@ -81,8 +78,34 @@
                 </div>
             </div>
         </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2024 CodigoPiter
+                </div>
+                <div class="donate-section">
+                    <form action="https://www.paypal.com/donate" method="post" target="_blank">
+                        <input type="hidden" name="business" value="TU_EMAIL_PAYPAL" />
+                        <input type="hidden" name="currency_code" value="USD" />
+                        <button type="submit" class="donate-button">
+                            <span class="donate-icon">❤️</span>
+                            <span>Apoyar proyecto</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </footer>
     </div>
     <!-- Luego cargar el script principal -->
     <script src="script.js"></script>
+
+    <!-- Modal para mostrar letras -->
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content">
+            <!-- El contenido se llenará dinámicamente -->
+        </div>
+    </div>
 </body>
 </html> 
