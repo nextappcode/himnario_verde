@@ -147,8 +147,12 @@ async function mostrarLetra(numero, idioma) {
             const modalContent = document.getElementById('modal-content');
             modalContent.innerHTML = '';
             
-            // Agregar estado al historial
-            history.pushState({ modal: true }, '', '');
+            // Agregar estado al historial con información del himno
+            history.pushState({ 
+                modal: true, 
+                numero: numero, 
+                idioma: idioma 
+            }, '', `#himno-${numero}`);
             
             // Header con número y títulos
             const header = document.createElement('div');
@@ -221,6 +225,7 @@ async function mostrarLetra(numero, idioma) {
             
             // Mostrar el modal con animación
             modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
         }
     } catch (error) {
         console.error('Error al cargar la letra:', error);
@@ -229,8 +234,9 @@ async function mostrarLetra(numero, idioma) {
 
 // Configurar eventos al cargar el documento
 function configurarEventos() {
-    // Cerrar modal al hacer clic fuera
     const modal = document.getElementById('modal');
+
+    // Cerrar modal al hacer clic fuera
     modal.addEventListener('click', function(event) {
         if (event.target === modal) {
             cerrarModal();
@@ -241,6 +247,16 @@ function configurarEventos() {
     window.addEventListener('popstate', function(event) {
         if (modal.classList.contains('active')) {
             cerrarModal();
+        } else if (event.state && event.state.modal) {
+            // Si volvemos a un estado con modal, lo mostramos
+            mostrarLetra(event.state.numero, event.state.idioma);
+        }
+    });
+
+    // Manejar tecla Escape
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.classList.contains('active')) {
+            cerrarModal();
         }
     });
 }
@@ -249,12 +265,25 @@ function configurarEventos() {
 function cerrarModal() {
     const modal = document.getElementById('modal');
     modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restaurar scroll
+    
+    // Si hay un estado en el historial, volvemos atrás
+    if (window.location.hash.includes('himno-')) {
+        history.back();
+    }
 }
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
     cargarHimnos();
     configurarEventos();
+    
+    // Si hay un hash en la URL al cargar, mostramos el himno correspondiente
+    const hash = window.location.hash;
+    if (hash && hash.includes('himno-')) {
+        const numero = hash.replace('#himno-', '');
+        mostrarLetra(numero, 'quechua');
+    }
     
     // Actualizar cada 5 segundos
     setInterval(actualizarHimnos, 5000);
