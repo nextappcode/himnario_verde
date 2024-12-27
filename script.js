@@ -147,8 +147,8 @@ async function mostrarLetra(numero, idioma) {
             const modalContent = document.getElementById('modal-content');
             modalContent.innerHTML = '';
             
-            // Agregar estado a la historia del navegador
-            window.history.pushState({ modal: true }, '');
+            // Agregar estado al historial
+            history.pushState({ modal: true }, '', '');
             
             // Header con número y títulos
             const header = document.createElement('div');
@@ -239,7 +239,7 @@ function configurarEventos() {
 
     // Manejar el botón atrás del navegador
     window.addEventListener('popstate', function(event) {
-        if (event.state === null) {
+        if (modal.classList.contains('active')) {
             cerrarModal();
         }
     });
@@ -250,11 +250,6 @@ function cerrarModal() {
     const modal = document.getElementById('modal');
     modal.classList.remove('active');
 }
-
-// Prevenir que el botón atrás cierre la aplicación
-window.addEventListener('load', function() {
-    window.history.pushState({ inicial: true }, '');
-});
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
