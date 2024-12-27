@@ -147,6 +147,9 @@ async function mostrarLetra(numero, idioma) {
             const modalContent = document.getElementById('modal-content');
             modalContent.innerHTML = '';
             
+            // Agregar estado al historial antes de mostrar el modal
+            window.history.pushState({ modal: true }, '');
+            
             // Header con número y títulos
             const header = document.createElement('div');
             header.className = 'modal-header';
@@ -230,15 +233,36 @@ function configurarEventos() {
     const modal = document.getElementById('modal');
     modal.addEventListener('click', function(event) {
         if (event.target === modal) {
-            modal.classList.remove('active');
+            cerrarModal();
         }
     });
+
+    // Manejar el botón atrás del navegador
+    window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.modal) {
+            // Si hay un estado del modal, mantener en la aplicación
+            window.history.pushState({ modal: true }, '');
+        } else {
+            cerrarModal();
+        }
+    });
+}
+
+// Función para cerrar el modal
+function cerrarModal() {
+    const modal = document.getElementById('modal');
+    if (modal.classList.contains('active')) {
+        modal.classList.remove('active');
+    }
 }
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
     cargarHimnos();
     configurarEventos();
+    
+    // Agregar estado inicial al historial
+    window.history.replaceState({ modal: false }, '');
     
     // Actualizar cada 5 segundos
     setInterval(actualizarHimnos, 5000);
